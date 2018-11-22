@@ -16,8 +16,18 @@ final class RouterFactory
 	 */
 	public static function createRouter()
 	{
+
 		$router = new RouteList;
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
-		return $router;
+		$router[] = new Route('/', 'Homepage:default', Route::ONE_WAY);
+
+		// ADMIN
+
+        $router[] = new Route("admin[/<presenter>[/<action>[/<id [0-9]+>]]]", [
+            "module" => "Admin",
+            "presenter" => "Default",
+            "action" => "default"
+        ]);
+
+        return $router;
 	}
 }

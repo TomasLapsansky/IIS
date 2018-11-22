@@ -1,6 +1,5 @@
 parameters:
 
-
 application:
 	errorPresenter: Error
 	mapping:
@@ -13,3 +12,8 @@ session:
 
 services:
 	router: App\RouterFactory::createRouter
+
+database:
+    dsn: 'mysql:host=localhost;dbname=lekaren_is'
+    user: 'root'
+    password: 'root'
