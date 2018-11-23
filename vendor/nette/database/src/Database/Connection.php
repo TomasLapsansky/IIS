@@ -19,10 +19,10 @@ class Connection
 {
 	use Nette\SmartObject;
 
-	/** @var callable[]  function (Connection $connection); Occurs after connection is established */
+	/** @var callable[]  function (Connection $connection): void; Occurs after connection is established */
 	public $onConnect;
 
-	/** @var callable[]  function (Connection $connection, ResultSet|DriverException $result); Occurs after query is executed */
+	/** @var callable[]  function (Connection $connection, ResultSet|DriverException $result): void; Occurs after query is executed */
 	public $onQuery;
 
 	/** @var array */
@@ -39,6 +39,9 @@ class Connection
 
 	/** @var PDO */
 	private $pdo;
+
+	/** @var string|null */
+	private $sql;
 
 
 	public function __construct($dsn, $user = null, $password = null, array $options = null)
@@ -175,9 +178,9 @@ class Connection
 	 */
 	public function query($sql, ...$params)
 	{
-		list($sql, $params) = $this->preprocess($sql, ...$params);
+		list($this->sql, $params) = $this->preprocess($sql, ...$params);
 		try {
-			$result = new ResultSet($this, $sql, $params);
+			$result = new ResultSet($this, $this->sql, $params);
 		} catch (PDOException $e) {
 			$this->onQuery($this, $e);
 			throw $e;
@@ -209,6 +212,15 @@ class Connection
 	}
 
 
+	/**
+	 * @return string|null
+	 */
+	public function getLastQueryString()
+	{
+		return $this->sql;
+	}
+
+
 	/********************* shortcuts ****************d*g**/
 
 
@@ -231,6 +243,17 @@ class Connection
 	public function fetchField($sql, ...$params)
 	{
 		return $this->query($sql, ...$params)->fetchField();
+	}
+
+
+	/**
+	 * Shortcut for query()->fetchFields()
+	 * @param  string
+	 * @return array|null
+	 */
+	public function fetchFields($sql, ...$params)
+	{
+		return $this->query($sql, ...$params)->fetchFields();
 	}
 
 
