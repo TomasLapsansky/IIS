@@ -1,4 +1,7 @@
 parameters:
+    dsn: 'mysql:host=localhost;dbname=lekaren_is'
+    user: 'root'
+    password: 'root'
 
 application:
 	errorPresenter: Error
@@ -9,11 +12,20 @@ application:
 session:
 	expiration: 14 days
 
+database:
+    default:
+        dsn: %dsn%
+        user: %user%
+        password: %password%
 
 services:
 	router: App\RouterFactory::createRouter
+	database: @database.default.context
 
-database:
-    dsn: 'mysql:host=localhost;dbname=lekaren_is'
-    user: 'root'
-    password: 'root'
+	tb_drug: Models\Drug
+	tb_user: Models\User
+	tb_order: Models\Order
+	tb_insurer: Models\Insurer
+	tb_producer: Models\Producer
+	tb_drug_insurer: Models\DrugInsurer
+	tb_order_drug: Models\OrderDrug

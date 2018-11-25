@@ -8,6 +8,4 @@ class BasePresenter extends Nette\Application\UI\Presenter
 {
     /** @var Nette\Database\Context @inject */
     public $database;
-
-
 }
