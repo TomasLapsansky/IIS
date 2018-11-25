@@ -1,10 +1,80 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-    User detail
+  User {php echo $id}
 {/block}
 
 {block content}
-    Detail user presenter<br>
-    {php echo $id}
+  <div class="row">
+    <div class="col-12">
+      <h1>{php echo $id} User name, surename</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      User image/avatar
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="row">
+        <div class="col-11">
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">email:</span>
+                <span>
+                    email@gmail.com
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">Password:</span>
+                <span>
+                    12345
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">Role:</span>
+                <span>
+                    admin/user
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">City:</span>
+                <span>
+                    Martin
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">Address:</span>
+                <span>
+                    Tulska 9
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">ZIP:</span>
+                <span>
+                    03601
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">Country:</span>
+                <span>
+                    Slovakia
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <span class="h5">Insurer:</span>
+                <span>
+                    1
+                </span>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 offset-md-7 col-sm-5 offset-sm-6 d-flex justify-content-between">
+        <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
+        <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Delete</a>        
+        </div>
+      </div>
+    </div>
+  </div>
+
 {/block}

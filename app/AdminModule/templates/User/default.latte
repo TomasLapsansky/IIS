@@ -1,9 +1,45 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-    Users
+  Users
 {/block}
 
 {block content}
-    all users
+    <div class="col-12">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surename</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Role</th>
+                <th scope="col">City</th>
+                <th scope="col">Address</th>
+                <th scope="col">ZIP</th>
+                <th scope="col">Country</th>
+                <th scope="col">Insurer ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">0</th>
+                <td>Filip</td>
+                <td>Plesko</td>
+                <td>filip@gmail.com</td>
+                <td>12345</td>
+                <td>Admin</td>
+                <td>Martin</td>
+                <td>Tulska 9</td>
+                <td>03601</td>
+                <td>Slovakia</td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+        <a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New user</a>
+    </div>
 {/block}

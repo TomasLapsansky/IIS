@@ -1,10 +1,48 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  Product detail
+  Product {php echo $id}
 {/block}
 
 {block content}
-    All products<br>
-    {php echo $id}
+  <div class="row">
+    <div class="col-12">
+      <h1>{php echo $id} name of product</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      IMAGE OF PRODUCT
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="row">
+        <div class="col-12">
+          <h5>Description:</h5>
+          <p>
+            Paracetamol, léčivá látka přípravku Paralen 500 tablety, působí proti bolesti a snižuje zvýšenou tělesnou teplotu.
+          </p>
+        </div>
+        <div class="col-12">
+          <h5>Producer:</h5>
+          <p>
+            Phoenix Zdravotnícke zásobovanie, a.s.
+          </p>
+        </div>
+        <div class="col-12">
+          <h5>Price:</h5>
+          <p>
+            99999
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 offset-8 d-flex justify-content-between">
+        <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
+        <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Delete</a>        
+        </div>
+      </div>
+    </div>
+  </div>
+
 {/block}
