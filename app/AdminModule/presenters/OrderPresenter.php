@@ -3,12 +3,12 @@
 namespace App\AdminModule\Presenters;
 
 use App\Presenters\BasePresenter;
-use Models\Drug;
+use Models\Order;
 use Nette;
 
-final class ProductPresenter extends BasePresenter {
+final class OrderPresenter extends BasePresenter {
 
-    /** @var Drug @inject */
+    /** @var Order @inject */
     public $productService;
 
     public function actionDefault() {

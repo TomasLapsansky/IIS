@@ -22,4 +22,12 @@ final class UserPresenter extends BasePresenter {
         $this->template->sys_user = $this->userService->getByID($id);
     }
 
+    public function actionAdd() {
+        
+    }
+
+    public function actionEdit() {
+        
+    }
+
 }
