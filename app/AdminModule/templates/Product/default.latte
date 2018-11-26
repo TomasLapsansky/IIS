@@ -14,18 +14,22 @@
                 <th scope="col">Count</th>
                 <th scope="col">Producer</th>
                 <th scope="col">Price</th>
-                <th scope="col">Description</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">0</th>
-                <td>Paralen</td>
-                <td>4</td>
-                <td>Alza</td>
-                <td>20e</td>
-                <td>Headache drug</td>
-            </tr>
+            {ifset $products}
+                <tr n:foreach="$products as $product">
+                    <th scope="row">{$product->id}</th>
+                    <td>{$product->name}</td>
+                    <td>{$product->count}</td>
+                    <td>{$product->producer}</td>
+                    <td>{$product->price}</td>
+                </tr>
+            {else}
+                <tr>
+                    <td>Products not found</td> {*TODO whole line*}
+                </tr>
+            {/ifset}
             </tbody>
         </table>
     </div>

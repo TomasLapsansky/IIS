@@ -30,4 +30,8 @@ abstract class DBtable {
     public function insert(array $array) {
         return $this->getTable()->insert($array);
     }
+
+    public function count() {
+        return $this->getTable()->count();
+    }
 }
