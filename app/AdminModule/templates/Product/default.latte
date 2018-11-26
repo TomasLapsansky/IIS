@@ -1,1 +1,71 @@
-Default Product presenter
+{layout '../Parts/layout.latte'}
+
+{block title}
+  Products
+{/block}
+
+{block content}
+    <div class="col-10 offset-1">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Count</th>
+                <th scope="col">Producer</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">0</th>
+                <td>Paralen</td>
+                <td>4</td>
+                <td>Alza</td>
+                <td>20e</td>
+                <td>Headache drug</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-10 offset-1 d-flex justify-content-end">
+        <a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New Product</a>
+    </div>
+{*
+    <div class="col-10 offset-1">
+        Add new product:
+    </div>
+    <div class="col-10 offset-1">
+        <form>
+            <div class="form-row">
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="ID">
+                </div>
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="Count">
+                </div>
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="Producer">
+                </div>
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="Price">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col form-group">
+                    <input type="text" class="form-control" placeholder="Description">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col form-group">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+*}
+{/block}
