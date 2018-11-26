@@ -27,6 +27,11 @@ final class RouterFactory
             "action" => "detail"
         ]);
 
+        $router[] = new Route("admin/<presenter>/<id [0-9]+>/edit", [
+            "module" => "Admin",
+            "action" => "edit"
+        ]);
+
         $router[] = new Route("admin[/<presenter>[/<action>[/<id [0-9]+>]]]", [
             "module" => "Admin",
             "presenter" => "Default",
