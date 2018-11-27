@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 27, 2018 at 05:16 PM
+-- Generation Time: Nov 27, 2018 at 06:55 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -32,7 +32,8 @@ CREATE TABLE `drug` (
   `count` int(10) UNSIGNED NOT NULL,
   `producer` int(11) NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
-  `description` text CHARACTER SET utf8 NOT NULL
+  `description` text CHARACTER SET utf8 NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/product/default.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -114,7 +115,8 @@ CREATE TABLE `user` (
   `address` varchar(50) CHARACTER SET utf8 NOT NULL,
   `zip` varchar(6) CHARACTER SET utf8 NOT NULL,
   `country` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `insurer_id` int(11) DEFAULT NULL
+  `insurer_id` int(11) DEFAULT NULL,
+  `avatar` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/avatar/default.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 --
