@@ -7,7 +7,7 @@
 {block content}
     {if $product}
         <div class="col-10 offset-1">
-                <form>
+                {*<form>
                     <div class="form-row">
                         <div class="col form-group">
                             <input type="text" class="form-control" value="{$product->name}">
@@ -16,7 +16,7 @@
                             <input type="text" class="form-control" value="{$product->count}">
                         </div>
                         <div class="col form-group">
-                            <input type="text" class="form-control" value="{$product->producer}"> {*TODO zoznam*}
+                            <input type="text" class="form-control" value="{$product->producer}"> *}{*TODO zoznam*}{*
                         </div>
                         <div class="col form-group">
                             <input type="text" class="form-control" value="{$product->price}">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
-                            <input type="text" class="form-control" value="{$product->description}"> {*TODO rozsirit na viac riadkov*}
+                            <input type="text" class="form-control" value="{$product->description}"> *}{*TODO rozsirit na viac riadkov*}{*
                         </div>
                     </div>
                     <div class="form-row">
@@ -32,7 +32,8 @@
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
-                </form>
+                </form>*}
+                {control editForm}
             </div>
     {else}
         Produkt neexistuje {*TODO pridat hlasku*}
