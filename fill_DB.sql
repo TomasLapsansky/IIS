@@ -33,45 +33,41 @@ INSERT INTO drug (name, count, producer, price, description) VALUES ('Apo-Ome 14
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Famosan 10 mg', 78, 1, 2, 'Famosan 10 mg tablety se užívají ke krátkodobé léčbě žaludečních obtíží (příznaky žaludečního překyselení, pálení žáhy a nevolnosti) u dospělých.');
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Persen 40 obalených table', 15, 1, 7, 'Léčivý přípravek s tradiční kombinací bylin se zklidňujícím účinkem (kozlík, meduňka, máta).');
 
-/*
-INSERT INTO insurer VALUES (0, 'Generali Poisťovňa, a. s.');
-INSERT INTO insurer VALUES (1, 'UNION poisťovňa, a.s.');
+INSERT INTO insurer (name) VALUES ('Generali Poisťovňa, a. s.');
+INSERT INTO insurer (name) VALUES ('UNION poisťovňa, a.s.');
 
 
-INSERT INTO producer VALUES (0, 'Phoenix Zdravotnícke zásobovanie, a.s.');
-INSERT INTO producer VALUES (1, 'IBSA Slovakia, s.r.o.');
+INSERT INTO producer (name) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.');
+INSERT INTO producer (name) VALUES ('IBSA Slovakia, s.r.o.');
 
 
-INSERT INTO order VALUES (0, 'waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order VALUES (1, 'sended', 'Bratislava', '00002', 'priehradska 2');
-INSERT INTO order VALUES (2, 'sended', 'Brno', '11100', 'kolejni 2');
-INSERT INTO order VALUES (3, 'sended', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order VALUES (5, 'waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order VALUES (6, 'sended', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order VALUES (7, 'waiting', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order VALUES (8, 'waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order VALUES (9, 'sended', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order VALUES (10, 'waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order VALUES (11, 'sended', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Bratislava', '00002', 'priehradska 2');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Brno', '11100', 'kolejni 2');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5');
+INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Prievidza', '53802', 'pod grunom 5');
+INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5');
+INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Zilina', '00001', 'zilinska 22');
 
 
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 1, 1);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (12, 3, 1);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 2, 2);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 4, 2);
 
-INSERT INTO drug_insurer VALUES (0, 5, 1, 0);
-INSERT INTO drug_insurer VALUES (1, 12, 3, 0);
-INSERT INTO drug_insurer VALUES (2, 5, 2, 1);
-INSERT INTO drug_insurer VALUES (3, 5, 4, 1);
 
-
-INSERT INTO order_drug VALUES (0, 5, 3, 0);
-INSERT INTO order_drug VALUES (1, 5, 0, 1);
-INSERT INTO order_drug VALUES (2, 3, 1, 2);
-INSERT INTO order_drug VALUES (3, 4, 2, 3);
-INSERT INTO order_drug VALUES (4, 4, 13, 4);
-INSERT INTO order_drug VALUES (5, 3, 15, 5);
-INSERT INTO order_drug VALUES (6, 2, 12, 6);
-INSERT INTO order_drug VALUES (7, 7, 5, 7);
-INSERT INTO order_drug VALUES (8, 5, 25, 8);
-INSERT INTO order_drug VALUES (9, 8, 20, 9);
-INSERT INTO order_drug VALUES (10, 11, 18, 10);
-INSERT INTO order_drug VALUES (11, 17, 17, 11);
-*/
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (5, 7, 1);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (3, 1, 2);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (4, 2, 3);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (4, 13, 4);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (3, 15, 5);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (2, 12, 6);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (7, 5, 7);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (5, 25, 8);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (8, 20, 9);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (11, 18, 10);
+INSERT INTO order_drug (count, drug_id, order_id) VALUES (17, 17, 11);

@@ -41,8 +41,8 @@ CREATE TABLE `insurer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `order_product`;
+CREATE TABLE `order_product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `status` varchar(20) NOT NULL,
   `city` varchar(20) DEFAULT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `order_drug` (
   KEY `drug_id` (`drug_id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `order_drug_ibfk_1` FOREIGN KEY (`drug_id`) REFERENCES `drug` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `order_drug_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE
+  CONSTRAINT `order_drug_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order_product` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 

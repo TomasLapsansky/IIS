@@ -1,0 +1,33 @@
+{layout '../Parts/layout.latte'}
+
+{block title}
+  Insurers
+{/block}
+
+{block content}
+    <div class="col-10 offset-1">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {ifset $insurers}
+                <tr n:foreach="$insurers as $insurer">
+                    <th scope="row">{$insurer->id}</th>
+                    <td>{$insurer->name}</td>
+                </tr>
+            {else}
+                <tr>
+                    <td>Insurers not found</td> {*TODO whole line*}
+                </tr>
+            {/ifset}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-10 offset-1 d-flex justify-content-end">
+        <a href="/admin/insurer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New insurer</a>
+    </div>
+{/block}
