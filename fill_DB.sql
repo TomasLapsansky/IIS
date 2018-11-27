@@ -5,7 +5,10 @@ INSERT INTO user (name, surname, email, password, city, address, zip, country) V
 INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Patricia', 'Hranata', 'pata@gmail.com', '12345', 'Brno', 'kolejni 2', 11100, 'czech republic');
 INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jozef', 'Mrkvicka', 'jozo@gmail.com', '12345', 'Prievidza', 'pod grunom 5', 53802, 'slovakia');
 
-INSERT INTO producer (name) VALUES ('Phoenix Zdravotnicke zasobovanie, a.s.');
+
+INSERT INTO producer (name) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.');
+INSERT INTO producer (name) VALUES ('IBSA Slovakia, s.r.o.');
+
 
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Paralen 500', 36, 1, 10, 'Paracetamol, léčivá látka přípravku Paralen 500 tablety, působí proti bolesti a snižuje zvýšenou tělesnou teplotu.');
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Ibalgin 400', 59, 1, 13, 'Ibalgin 400 zmírňuje bolest a zánět různého původu a zároveň tlumí horečku provázející nemoci z nachlazení u dospělých a dospívajících od 12 let.');
@@ -33,12 +36,9 @@ INSERT INTO drug (name, count, producer, price, description) VALUES ('Apo-Ome 14
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Famosan 10 mg', 78, 1, 2, 'Famosan 10 mg tablety se užívají ke krátkodobé léčbě žaludečních obtíží (příznaky žaludečního překyselení, pálení žáhy a nevolnosti) u dospělých.');
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Persen 40 obalených table', 15, 1, 7, 'Léčivý přípravek s tradiční kombinací bylin se zklidňujícím účinkem (kozlík, meduňka, máta).');
 
+
 INSERT INTO insurer (name) VALUES ('Generali Poisťovňa, a. s.');
 INSERT INTO insurer (name) VALUES ('UNION poisťovňa, a.s.');
-
-
-INSERT INTO producer (name) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.');
-INSERT INTO producer (name) VALUES ('IBSA Slovakia, s.r.o.');
 
 
 INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
