@@ -3,18 +3,10 @@
 namespace App\AdminModule\Presenters;
 
 use App\Presenters\BasePresenter;
-use Models\Drug;
-use Models\Producer;
 use Nette;
 use Nette\Application\UI;
 
 final class ProductPresenter extends BasePresenter {
-
-    /** @var Drug @inject */
-    public $productService;
-
-    /** @var Producer @inject */
-    public $producerService;
 
     public function actionDefault() {
         if ($this->productService->count() != 0) {
