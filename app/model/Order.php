@@ -5,6 +5,6 @@ namespace Models;
 
 class Order extends DBtable {
 
-    public static $tableName = "order";
+    public static $tableName = "order_product";
 
 }

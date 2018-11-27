@@ -1,0 +1,27 @@
+{layout '../Parts/layout.latte'}
+
+{block title}
+  insurer edit
+{/block}
+
+{block content}
+    {if $insurer}
+        <div class="col-10 offset-1">
+                <form>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <input type="text" class="form-control" value="{$insurer->name}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    {else}
+        Produkt neexistuje {*TODO pridat hlasku*}
+    {/if}
+{/block}
+

@@ -9,17 +9,17 @@ use Nette;
 final class InsurerPresenter extends BasePresenter {
 
     /** @var Insurer @inject */
-    public $productService;
+    public $insurerService;
 
     public function actionDefault() {
-        if ($this->productService->count() != 0) {
-            $this->template->products = $this->productService->getAll();
+        if ($this->insurerService->count() != 0) {
+            $this->template->insurers = $this->insurerService->getAll();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->product = $this->productService->getByID($id);
+        $this->template->insurer = $this->insurerService->getByID($id);
     }
 
     public function actionAdd() {
@@ -27,7 +27,7 @@ final class InsurerPresenter extends BasePresenter {
     }
 
     public function actionEdit($id) {
-        $this->template->product = $this->productService->getByID($id);
+        $this->template->insurer = $this->insurerService->getByID($id);
     }
 
 }

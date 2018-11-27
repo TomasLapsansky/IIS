@@ -9,17 +9,17 @@ use Nette;
 final class OrderPresenter extends BasePresenter {
 
     /** @var Order @inject */
-    public $productService;
+    public $orderService;
 
     public function actionDefault() {
-        if ($this->productService->count() != 0) {
-            $this->template->products = $this->productService->getAll();
+        if ($this->orderService->count() != 0) {
+            $this->template->orders = $this->orderService->getAll();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->product = $this->productService->getByID($id);
+        $this->template->order = $this->orderService->getByID($id);
     }
 
     public function actionAdd() {
@@ -27,7 +27,7 @@ final class OrderPresenter extends BasePresenter {
     }
 
     public function actionEdit($id) {
-        $this->template->product = $this->productService->getByID($id);
+        $this->template->order = $this->orderService->getByID($id);
     }
 
 }

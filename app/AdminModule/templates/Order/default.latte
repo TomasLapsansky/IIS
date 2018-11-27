@@ -1,0 +1,39 @@
+{layout '../Parts/layout.latte'}
+
+{block title}
+  orders
+{/block}
+
+{block content}
+    <div class="col-10 offset-1">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status</th>
+                <th scope="col">City</th>
+                <th scope="col">Zip</th>
+                <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            {ifset $orders}
+                <tr n:foreach="$orders as $order">
+                    <th scope="row">{$order->id}</th>
+                    <td>{$order->status}</td>
+                    <td>{$order->city}</td>
+                    <td>{$order->zip}</td>
+                    <td>{$order->address}</td>
+                </tr>
+            {else}
+                <tr>
+                    <td>orders not found</td> {*TODO whole line*}
+                </tr>
+            {/ifset}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-10 offset-1 d-flex justify-content-end">
+        <a href="/admin/order/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New order</a>
+    </div>
+{/block}

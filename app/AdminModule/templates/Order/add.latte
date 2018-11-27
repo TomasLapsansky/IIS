@@ -1,0 +1,33 @@
+{layout '../Parts/layout.latte'}
+
+{block title}
+  Product add
+{/block}
+
+{block content}
+  <div class="col-10 offset-1">
+      <form>
+          <div class="form-row">
+              <div class="col form-group">
+                  <input type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="col form-group">
+                  <input type="text" class="form-control" placeholder="Producer">   {*TODO zoznam*}
+              </div>
+              <div class="col form-group">
+                  <input type="text" class="form-control" placeholder="Price">
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="col form-group">
+                  <input type="text" class="form-control" placeholder="Description">
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="col form-group">
+                  <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+          </div>
+      </form>
+  </div>
+{/block}
