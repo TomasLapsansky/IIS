@@ -3,7 +3,6 @@
 namespace App\AdminModule\Presenters;
 
 use App\Presenters\BasePresenter;
-use Nette;
 use Nette\Application\UI;
 
 final class ProductPresenter extends BasePresenter {
@@ -69,7 +68,6 @@ final class ProductPresenter extends BasePresenter {
     {
 
         $form = new UI\Form();
-        $form->getPresenter(false);
         $form->addText('name', 'Meno:')->setRequired();
         $form->addText('count', 'Pocet:')->setRequired();
         $form->addText('producer', 'Vyrobca:')->setRequired();

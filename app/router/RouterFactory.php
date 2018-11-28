@@ -38,6 +38,13 @@ final class RouterFactory
             "action" => "default"
         ]);
 
+        // REGISTER
+
+        $router[] = new Route("register", [
+            "presenter" => "Register",
+            "action" => "Default"
+        ]);
+
         return $router;
 	}
 }
