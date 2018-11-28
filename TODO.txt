@@ -1,0 +1,40 @@
+FRONTEND
+
+product default
+zoznam ako na homepage
+product detail
+add to cart, description
+
+/cart/
+veci v kosiku, moznost upravy (delete, zmena poctu)
+/cart/summary/
+finalny vypis
+
+(do kosika vsetko ako zoznamy pod sebou)
+
+/settings/
+nastavenia uzivatela + musi tam byt vramci nette formu aj pridanie avatara, ale avatara poriesime az na koniec ak to stihneme
+
+/order/
+zoznam objednavok uzivatela
+
+
+BACKEND
+
+Pridat producers (vyrobcovia)
++detail
+
+v administracii chyba
+* drug_insurer
+* order_drug
+
+drug_insurer
+	- v detaile insurer treba dat dole “tabulku” add drug, bude tam select z drog ktore este nema pridane (to ze tam budu len tie co nema zariadim ja)
+
+order_drug
+	- do order tiez dole pridat add drug + zoznam drug k danej objednavke, vsetky tieto veci budu na jednej stranke
+
+DRUG
+	- pridat add image do editu v detaile
+
+ZISTIT AKO NADESIGNOVAT FORMULARE
