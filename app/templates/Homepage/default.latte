@@ -1,1 +1,30 @@
-<h1>{php echo $test}</h1>
+{layout '../parts/@layout.latte'}
+
+{block title}
+    Home
+{/block}
+
+{block content}
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-10 d-flex justify-content-start flex-wrap">
+        <article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
+            <div class="shadow p-2 bg-white rounded">
+                <div>
+                    <img src= "/image/product/default.png" alt="product image" class="img-thumbnail">
+                </div>
+
+                <div class="text-center mt-3 mb-3">
+                    <h3 class="h6">Lorem ipsum dolor sit amet</h3>
+                </div>
+
+                <div class="text-center">
+                    999€
+                </div>
+            </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+{/block}

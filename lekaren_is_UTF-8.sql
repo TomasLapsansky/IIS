@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 27, 2018 at 06:55 PM
+-- Generation Time: Nov 27, 2018 at 09:00 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -84,7 +84,8 @@ CREATE TABLE `order_product` (
   `status` varchar(20) CHARACTER SET utf8 NOT NULL,
   `city` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `zip` varchar(6) CHARACTER SET utf8 DEFAULT NULL,
-  `address` varchar(50) CHARACTER SET utf8 DEFAULT NULL
+  `address` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `user_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -156,7 +157,8 @@ ALTER TABLE `order_drug`
 -- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`user_id`);
 
 --
 -- Indexes for table `producer`
@@ -240,6 +242,12 @@ ALTER TABLE `drug_insurer`
 ALTER TABLE `order_drug`
   ADD CONSTRAINT `order_drug_ibfk_1` FOREIGN KEY (`drug_id`) REFERENCES `drug` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_drug_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order_product` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_product`
+--
+ALTER TABLE `order_product`
+  ADD CONSTRAINT `id_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `user`

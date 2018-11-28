@@ -41,17 +41,17 @@ INSERT INTO insurer (name) VALUES ('Generali Poisťovňa, a. s.');
 INSERT INTO insurer (name) VALUES ('UNION poisťovňa, a.s.');
 
 
-INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Bratislava', '00002', 'priehradska 2');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Brno', '11100', 'kolejni 2');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5');
-INSERT INTO order_product (status, city, zip, address) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22');
-INSERT INTO order_product (status, city, zip, address) VALUES ('sended', 'Zilina', '00001', 'zilinska 22');
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22', 6);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Bratislava', '00002', 'priehradska 2', 4);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Brno', '11100', 'kolejni 2', 3);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5', 5);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22', 6);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Zilina', '00001', 'zilinska 22', 6);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('waiting', 'Prievidza', '53802', 'pod grunom 5', 5);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22', 6);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Prievidza', '53802', 'pod grunom 5', 5);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('waiting', 'Zilina', '00001', 'zilinska 22', 6);
+INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended', 'Zilina', '00001', 'zilinska 22', 6);
 
 
 INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 1, 1);
