@@ -1,9 +1,9 @@
-INSERT INTO user (name, surname, email, password, role, city, address, zip, country) VALUES ('Tomas', 'Lapsansky', 'tomas@gmail.com', '12345', 'admin', 'Presov', 'presovska 22', 00000, 'slovakia');
-INSERT INTO user (name, surname, email, password, role, city, address, zip, country) VALUES ('Filip', 'Plesko', 'filip@gmail.com', '12345', 'admin', 'Martin', 'tulska 9', 03601, 'slovakia');
-INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Juro', 'Mrkvicka', 'juro@gmail.com', '12345', 'Zilina', 'zilinska 22', 00001, 'slovakia');
-INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jana', 'Dolna', 'jana@gmail.com', '12345', 'Bratislava', 'priehradska 2', 00002, 'slovakia');
-INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Patricia', 'Hranata', 'pata@gmail.com', '12345', 'Brno', 'kolejni 2', 11100, 'czech republic');
-INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jozef', 'Mrkvicka', 'jozo@gmail.com', '12345', 'Prievidza', 'pod grunom 5', 53802, 'slovakia');
+INSERT INTO user (name, surname, email, password, role, city, address, zip, country) VALUES ('Tomas', 'Lapsansky', 'tomas@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'admin', 'Presov', 'presovska 22', 00000, 'slovakia');
+INSERT INTO user (name, surname, email, password, role, city, address, zip, country) VALUES ('Filip', 'Plesko', 'filip@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'admin', 'Martin', 'tulska 9', 03601, 'slovakia');
+INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Juro', 'Mrkvicka', 'juro@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'Zilina', 'zilinska 22', 00001, 'slovakia');
+INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jana', 'Dolna', 'jana@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'Bratislava', 'priehradska 2', 00002, 'slovakia');
+INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Patricia', 'Hranata', 'pata@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'Brno', 'kolejni 2', 11100, 'czech republic');
+INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jozef', 'Mrkvicka', 'jozo@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'Prievidza', 'pod grunom 5', 53802, 'slovakia');
 
 
 INSERT INTO producer (name) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.');
