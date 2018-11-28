@@ -12,7 +12,7 @@ class AdminBasePresenter extends BasePresenter
         parent::startup();
 
         if(!$this->user->isInRole('admin')) {
-            $this->redirect("Login:");
+            $this->redirect(":Login:");
         }
 
     }
