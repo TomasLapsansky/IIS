@@ -21,6 +21,7 @@ database:
 services:
 	router: App\RouterFactory::createRouter
 	database: @database.default.context
+	authenticator: Authenticator
 
 	tb_drug: Models\Drug
 	tb_user: Models\User
