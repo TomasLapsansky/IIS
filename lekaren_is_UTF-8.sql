@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 27, 2018 at 09:00 PM
+-- Generation Time: Nov 28, 2018 at 09:12 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -171,6 +171,7 @@ ALTER TABLE `producer`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `insurer_id` (`insurer_id`);
 
 --
