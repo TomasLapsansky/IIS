@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 28, 2018 at 09:12 PM
+-- Generation Time: Nov 28, 2018 at 10:55 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lekaren_is`
+-- Database: `update_lekaren_is`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,8 @@ CREATE TABLE `drug` (
   `producer` int(11) NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `description` text CHARACTER SET utf8 NOT NULL,
-  `image` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/product/default.png'
+  `image` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/product/default.png',
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -85,7 +86,8 @@ CREATE TABLE `order_product` (
   `city` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `zip` varchar(6) CHARACTER SET utf8 DEFAULT NULL,
   `address` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `user_id` int(10) NOT NULL
+  `user_id` int(10) NOT NULL,
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -117,7 +119,8 @@ CREATE TABLE `user` (
   `zip` varchar(6) CHARACTER SET utf8 NOT NULL,
   `country` varchar(50) CHARACTER SET utf8 NOT NULL,
   `insurer_id` int(11) DEFAULT NULL,
-  `avatar` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/avatar/default.png'
+  `avatar` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/avatar/default.png',
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 --
