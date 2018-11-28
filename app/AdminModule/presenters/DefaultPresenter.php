@@ -2,10 +2,9 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\Presenters\BasePresenter;
 use Nette;
 
-final class DefaultPresenter extends BasePresenter {
+final class DefaultPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
 

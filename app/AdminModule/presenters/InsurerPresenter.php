@@ -6,7 +6,7 @@ use App\Presenters\BasePresenter;
 use Models\Insurer;
 use Nette;
 
-final class InsurerPresenter extends BasePresenter {
+final class InsurerPresenter extends AdminBasePresenter {
 
     /** @var Insurer @inject */
     public $insurerService;
