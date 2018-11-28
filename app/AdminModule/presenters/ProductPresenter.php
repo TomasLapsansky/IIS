@@ -2,10 +2,9 @@
 
 namespace App\AdminModule\Presenters;
 
-use App\Presenters\BasePresenter;
 use Nette\Application\UI;
 
-final class ProductPresenter extends BasePresenter {
+final class ProductPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
         if ($this->productService->count() != 0) {

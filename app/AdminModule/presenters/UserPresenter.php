@@ -3,10 +3,9 @@
 namespace App\AdminModule\Presenters;
 
 
-use App\Presenters\BasePresenter;
 use Nette\Application\UI;
 
-final class UserPresenter extends BasePresenter {
+final class UserPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
         if ($this->userService->count() != 0) {

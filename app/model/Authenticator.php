@@ -24,13 +24,6 @@ class Authenticator implements \Nette\Security\IAuthenticator {
             throw new Nette\Security\AuthenticationException('Invalid password.');
         }
 
-        /* hash password if it was modified */
-        if($user->password === $password) {
-            $user->update([
-                'password' => Security\Passwords::hash($password)
-            ]);
-        }
-
         return new Nette\Security\Identity($user->id, $user->role, ['email' => $user->email]);
     }
 }

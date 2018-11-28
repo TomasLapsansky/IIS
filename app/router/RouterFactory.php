@@ -18,7 +18,7 @@ final class RouterFactory
 	{
 
 		$router = new RouteList;
-		$router[] = new Route('/', 'Homepage:default', Route::ONE_WAY);
+		$router[] = new Route('', 'Homepage:default');
 
 		// ADMIN
 
@@ -41,7 +41,7 @@ final class RouterFactory
         // REGISTER
 
         $router[] = new Route("[<presenter>/[<action>[/<id [0-9]+>]]]", [
-            "presenter" => "Default",
+            "presenter" => "Homepage",
             "action" => "Default"
         ]);
 
