@@ -28,4 +28,15 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     /** @var Insurer @inject */
     public $insurerService;
+
+    protected function startup() {
+
+        parent::startup();
+
+        $this->template->user = $this->user;
+    }
+
+    public function handleLogOut() {
+        $this->user->logout();
+    }
 }

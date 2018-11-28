@@ -1,30 +1,36 @@
 <header>
-  <div class="container-fluid">
-      <div class="row">
-          <a href="/admin"><i class="material-icons" style="color:black;">dehaze</i></a>
-      </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-4">
-        <h1>SpeciLogo</h1>
-      </div>
-      <div class="col-4 offset-4 d-flex justify-content-end">
-        <a href="{$basePath}/register">Register</a>
-        <a href="{$basePath}/login">Login</a>
-        <a href="/{$basePath}">Log Out</a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6 offset-2">
-        <ul class="d-flex list-unstyled">
-          <li class="pr-3"><a href="/{$basePath}">Home</a></li>
-          <li><a href="{$basePath}/products">products</a></li>
-        </ul>
-      </div>
-      <div class="col-4">
-        <a href="#" class="d-flex align-items-center"><i class="material-icons" style="color:black;">shopping_cart</i><span>buy</span></a>
-      </div>
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class="row">
+			<a href="/admin"><i class="material-icons" style="color:black;">dehaze</i></a>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<h1>SpeciLogo</h1>
+			</div>
+			<div class="col-4 offset-4 d-flex justify-content-end">
+				{if $user->isLoggedIn()}
+					{if $user->isInRole('admin')}
+						<a href="/admin">Admin mode</a>
+					{/if}
+					<a n:href="logOut!">Log Out</a>
+				{else}
+					<a href="{$basePath}/register">Register</a>
+					<a href="{$basePath}/login">Login</a>
+				{/if}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 offset-2">
+				<ul class="d-flex list-unstyled">
+					<li class="pr-3"><a href="/{$basePath}">Home</a></li>
+					<li><a href="{$basePath}/products">products</a></li>
+				</ul>
+			</div>
+			<div class="col-4">
+				<a href="#" class="d-flex align-items-center"><i class="material-icons" style="color:black;">shopping_cart</i><span>buy</span></a>
+			</div>
+		</div>
+	</div>
 </header>
