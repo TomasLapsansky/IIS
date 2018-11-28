@@ -39,8 +39,10 @@ final class RouterFactory
         ]);
 
         // REGISTER
+
         $router[] = new Route("register", [
-            "presenter" => "Register"
+            "presenter" => "Register",
+            "action" => "Default"
         ]);
 
         return $router;
