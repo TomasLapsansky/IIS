@@ -8,6 +8,15 @@ use Nette\Security\AuthenticationException;
 
 final class LoginPresenter extends BasePresenter {
 
+    protected function startup() {
+
+        parent::startup();
+
+        if($this->user->isLoggedIn()) {
+            $this->redirect("Homepage:");
+        }
+    }
+
     protected function createComponentLoginForm() {
 
         $form = new UI\Form;

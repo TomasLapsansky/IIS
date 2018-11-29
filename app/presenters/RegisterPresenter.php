@@ -8,8 +8,13 @@ use Nette\Security\Passwords;
 
 final class RegisterPresenter extends BasePresenter {
 
-    public function actionDefault() {
+    protected function startup() {
 
+        parent::startup();
+
+        if($this->user->isLoggedIn()) {
+            $this->redirect("Homepage:");
+        }
     }
 
     protected function createComponentRegisterForm() {
