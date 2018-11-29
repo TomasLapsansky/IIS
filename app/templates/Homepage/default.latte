@@ -7,20 +7,23 @@
 {block content}
 	<div class="container">
 		<div class="row d-flex justify-content-center">
+			<div class="col-10 d-flex justify-content-center">
+				<span class="h4">Lastes products</span>
+			</div>
 			<div class="col-10 d-flex justify-content-start flex-wrap">
 				{foreach $products as $product}
-					<article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
-						<a href="#" class="text-dark" style="text-decoration:none;">
-							<div class="shadow p-2 bg-white rounded">
-								<div>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 d-flex">
+						<a href="{$basePath}/product/detail/{$product->id}" class="text-dark d-flex" style="text-decoration:none;">
+							<div class="shadow p-2 bg-white rounded d-flex flex-wrap justify-content-center">
+								<div class="col-12">
 									<img src="{$product->image}" alt="product image" class="img-thumbnail">
-								</div>
+								</div class="col-12">
 
-								<div class="text-center mt-3 mb-3">
+								<div class="col-12 text-center mt-3 mb-3">
 									<h3 class="h6">{$product->name}</h3>
 								</div>
 
-								<div class="text-center">
+								<div class="col-12 text-center">
 									{$product->price} €
 								</div>
 							</div>
