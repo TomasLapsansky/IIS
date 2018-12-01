@@ -2,6 +2,8 @@
 
 namespace App\Presenters;
 
+use Nette\Application\UI;
+
 
 final class CartPresenter extends BasePresenter {
 
@@ -16,6 +18,17 @@ final class CartPresenter extends BasePresenter {
         }
 
         $this->template->products = $template_products;
+    }
+
+    protected function createComponentSummaryForm() {
+
+        $form = new UI\Form();
+        $form->addInteger("count", "Count:")->setRequired();
+        $form->addHidden("id");
+        $form->addSubmit("summary", "Proceed to summary");
+        $form->onSuccess[] = [$this, "someSpecialFunction"];
+
+        return $form;
     }
 
 }
