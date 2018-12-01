@@ -47,7 +47,7 @@ final class ProductPresenter extends BasePresenter
         $form = new UI\Form();
         $form->addInteger("count", "Count:")->setRequired();
         $form->addSubmit("addToCart", "Add to cart");
-        $form->onSuccess[] = [$this, "cartCountSuccedeed"];
+        $form->onSuccess[] = [$this, "handleAddToCart"];
 
         return $form;
     }
