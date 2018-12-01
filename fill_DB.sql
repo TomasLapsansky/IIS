@@ -6,8 +6,8 @@ INSERT INTO user (name, surname, email, password, city, address, zip, country) V
 INSERT INTO user (name, surname, email, password, city, address, zip, country) VALUES ('Jozef', 'Mrkvicka', 'jozo@gmail.com', '$2y$10$CoXpz.LPg3GIELLbv2.VCu96dI8Pr3zP4gcAL0P7Qi0Rfswlq7DqC', 'Prievidza', 'pod grunom 5', 53802, 'slovakia');
 
 
-INSERT INTO producer (name) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.');
-INSERT INTO producer (name) VALUES ('IBSA Slovakia, s.r.o.');
+INSERT INTO producer (name, time_delivery) VALUES ('Phoenix Zdravotnícke zásobovanie, a.s.', 3);
+INSERT INTO producer (name, time_delivery) VALUES ('IBSA Slovakia, s.r.o.', 5);
 
 
 INSERT INTO drug (name, count, producer, price, description) VALUES ('Paralen 500', 36, 1, 10, 'Paracetamol, léčivá látka přípravku Paralen 500 tablety, působí proti bolesti a snižuje zvýšenou tělesnou teplotu.');
