@@ -27,24 +27,30 @@ final class ProductPresenter extends BasePresenter
 
     public function cartCountSucceeded(UI\Form $form, $values) {
 
-        if(isset($_COOKIE['cart'])) {
-            $cart_products = unserialize($_COOKIE['cart']);
-        } else {
-            setcookie('cart', '', time() + 60 * 100000, '/');
-            //$cart_products = unserialize($_COOKIE['cart']);
-        }
+        if($values->count > 0) {
 
-        if(isset($cart_products)) {
-            $cart = $cart_products + [
-                $values->id => $values->count
+            if (isset($_COOKIE['cart'])) {
+                $cart_products = unserialize($_COOKIE['cart']);
+            } else {
+                setcookie('cart', '', time() + 60 * 100000, '/');
+                //$cart_products = unserialize($_COOKIE['cart']);
+            }
+
+            if (isset($cart_products)) {
+                $cart = $cart_products + [
+                        $values->id => $values->count
+                    ];
+            } else {
+                $cart = [
+                    $values->id => $values->count    //count
                 ];
-        } else {
-            $cart = [
-                $values->id => $values->count    //count
-            ];
-        }
+            }
 
-        setcookie('cart', serialize($cart), time() + 60 * 100000, '/');
+            setcookie('cart', serialize($cart), time() + 60 * 100000, '/');
+        } else {
+            $this->flashMessage("Mnozstvo musi byt aspon 1", "warning");
+            return;
+        }
     }
 
     protected function createComponentCartCount() {
