@@ -1,5 +1,5 @@
 {foreach $flashes as $flash}
-    <div class="alert alert-danger flash {$flash->type}" role="alert">
+    <div class="alert alert-info flash {$flash->type}" role="alert">
         {$flash->message}
     </div>
 {/foreach}
@@ -29,7 +29,7 @@
 				{/if}
 			</div>
 			<div class="col-10 d-flex justify-content-end pr-0">
-				<a href="#" class="d-flex align-items-center" style="text-decoration:none;"><i class="material-icons" style="color:#ba0909;">shopping_cart</i><span>cart</span></a>
+				<a href="/cart" class="d-flex align-items-center" style="text-decoration:none;"><i class="material-icons" style="color:#ba0909;">shopping_cart</i><span>cart</span></a>
 			</div>
 		</div>
 	</div>

@@ -43,16 +43,25 @@
 									<i><b>Skladom {$product->count} ks</b></i>
 								</p>
 							{else}
-								<p>
-									<i><b>Predpokladany cas dorucenia: XXX</b></i>
-								</p>
+								{if $producer->time_delivery == 1}
+									<p>
+										<i><b>Predpokladany cas dorucenia: {$producer->time_delivery} den</b></i>
+									</p>
+								{else}
+									<p>
+										<i><b>Predpokladany cas dorucenia: {$producer->time_delivery} dni</b></i>
+									</p>
+								{/if}
 							{/if}
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-4 offset-4">
-							<a href="#" class="btn btn-primary btn-lg active pl-5 pr-5" role="button"
-							   aria-pressed="true">Buy</a>
+							<a n:href="addToCart! $product->id" class="btn btn-primary btn-lg active pl-5 pr-5
+							{if $product->count == 0}
+								disabled
+							{/if}
+							" role="button" aria-pressed="true">Add to cart</a>
 						</div>
 					</div>
 				</div>

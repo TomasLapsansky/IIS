@@ -1,24 +1,26 @@
 {layout '../parts/@layout.latte'}
 
 {block title}
-  Cart
+	Cart
 {/block}
 
 {block content}
-    <div class="container">
-        <div class="row border">
-            <div class="col-3">
-            Product img
-            </div>
-            <div class="col-3">
-            Product name
-            </div>
-            <div class="col-2">
-            count
-            </div>
-            <div class="col-4">
-            delete
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		{foreach $products as $id => [$product, $count]}
+			<div class="row border">
+				<div class="col-3">
+					<img src="{$product->image}" alt="product image" class="img-thumbnail">
+				</div>
+				<div class="col-3">
+					{$product->name}
+				</div>
+				<div class="col-2">
+					{$count}
+				</div>
+				<div class="col-4">
+					delete
+				</div>
+			</div>
+		{/foreach}
+	</div>
 {/block}
