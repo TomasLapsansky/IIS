@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 use Nette\Application\UI;
+use Nette\Security\Passwords;
 
 
 final class SettingsPresenter extends BasePresenter {
@@ -27,7 +28,8 @@ final class SettingsPresenter extends BasePresenter {
             'address' => $sys_user->address,
             'zip' => $sys_user->zip,
             'country' => $sys_user->country,
-            'insurer' => $sys_user->insurer_id
+            'insurer' => $sys_user->insurer_id,
+            'id' => $sys_user->id
         ]);
 
     }
@@ -39,14 +41,38 @@ final class SettingsPresenter extends BasePresenter {
         $form = new UI\Form();
         $form->addText('name', 'Name:')->setRequired();
         $form->addText('surname', 'Surname:')->setRequired();
-        $form->addPassword('pass', 'Password:')->setRequired();
+        $form->addPassword('password', 'Password:');
         $form->addText('city', 'City:')->setRequired();
         $form->addText('address', 'Address:')->setRequired();
         $form->addText('zip', 'ZIP:')->setRequired();
         $form->addText('country', 'Country:')->setRequired();
+        $form->addHidden('id');
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
+        $form->addSubmit('edit', 'Edit');
         $form->onSuccess[] = [$this, 'setUserSucceeded'];
         return $form;
+    }
+
+    public function setUserSucceeded(UI\Form $form, $values) {
+
+        $sys_user = $this->userService->getByID($values->id);
+
+        $sys_user->update([
+            'name' => $values->name,
+            'surname' => $values->surname,
+            'password' => Passwords::hash($values->password),
+            'city' => $values->city,
+            'address' => $values->address,
+            'zip' => $values->zip,
+            'country' => $values->country,
+            'insurer_id' => $values->insurer
+        ]);
+
+        if($values->password) {
+            $sys_user->update(['password' => $values->password]);
+        }
+
+        $this->flashMessage("Vas profil bol upraveny", "success");
     }
 
 }
