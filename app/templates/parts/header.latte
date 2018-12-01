@@ -6,34 +6,29 @@
 
 <header>
 	<div class="container-fluid">
-		<div class="row">
-			<a href="/admin"><i class="material-icons" style="color:black;">dehaze</i></a>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row">
+		<div class="row mt-3">
+			<div class="col-2 offset-2 pl-0">
+				<h1 style="color:#49a927;"><a href="/{$basePath}"><img src="/image/assets/logo.png" width=80></a></h1>
+			</div>
 			<div class="col-4">
-				<h1>SpeciLogo</h1>
-			</div>
-			<div class="col-4 offset-4 d-flex justify-content-end">
-				{if $user->isLoggedIn()}
-					{if $user->isInRole('admin')}
-						<a href="/admin">Admin mode</a>
-					{/if}
-					<a n:href="logOut!">Log Out</a>
-				{else}
-					<a href="{$basePath}/register">Register</a>
-					<a href="{$basePath}/login">Login</a>
-				{/if}
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6 offset-2">
-				<ul class="d-flex list-unstyled">
+				<ul class="d-flex justify-content-center list-unstyled">
 					<li class="pr-3"><a href="/{$basePath}">Home</a></li>
 					<li class="pr-3"><a href="{$basePath}/product">products</a></li>
-					<li><a href="#" class="d-flex align-items-center" style="text-decoration:none;"><i class="material-icons" style="color:black;">shopping_cart</i><span>cart</span></a></li>
 				</ul>
+			</div>
+			<div class="col-2 d-flex justify-content-end pr-0">
+				{if $user->isLoggedIn()}
+					{if $user->isInRole('admin')}
+						<a href="/admin" class="d-flex align-items-base pr-3"><span>Admin</span><i class="material-icons">settings</i></a>
+					{/if}
+					<a n:href="logOut!" class="d-flex align-items-base"><span>Log Out</span><i class="material-icons">power_settings_new</i></a>
+				{else}
+					<a href="{$basePath}/register" class="d-flex align-items-base pr-3"><span>Register</span><i class="material-icons ">playlist_add</i></a>
+					<a href="{$basePath}/login" class="d-flex align-items-base"><span>Login</span><i class="material-icons">playlist_add_check</i></a>
+				{/if}
+			</div>
+			<div class="col-10 d-flex justify-content-end pr-0">
+				<a href="#" class="d-flex align-items-center" style="text-decoration:none;"><i class="material-icons" style="color:#ba0909;">shopping_cart</i><span>cart</span></a>
 			</div>
 		</div>
 	</div>

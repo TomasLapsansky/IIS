@@ -5,25 +5,25 @@
 {/block}
 
 {block content}
-	<div class="container">
+	<div class="container content">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10 d-flex justify-content-center">
 				<span class="h4">All products</span>
 			</div>
-			<div class="col-10 d-flex justify-content-start flex-wrap">
+			<div class="col-10 d-flex justify-content-start flex-wrap product-wrap">
 				{foreach $products as $product}
 					<article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 d-flex">
 						<a href="{$basePath}/product/detail/{$product->id}" class="text-dark d-flex" style="text-decoration:none;">
-							<div class="shadow p-2 bg-white rounded d-flex flex-wrap justify-content-center">
+							<div class="shadow p-2 bg-white rounded d-flex flex-wrap justify-content-center product-min">
 								<div class="col-12">
 									<img src="{$product->image}" alt="product image" class="img-thumbnail">
 								</div class="col-12">
 
-								<div class="col-12 text-center mt-3 mb-3">
+								<div class="col-12 text-center mt-3 mb-3 name">
 									<h3 class="h6">{$product->name}</h3>
 								</div>
 
-								<div class="col-12 text-center">
+								<div class="col-12 text-center price">
 									{$product->price} €
 								</div>
 							</div>
