@@ -57,12 +57,18 @@
 					</div>
 					<div class="row">
 						<div class="col-4 offset-4">
-							<a n:href="addToCart! $product->id" class="btn btn-primary btn-lg active pl-5 pr-5
+						{*	<a n:href="addToCart! $product->id" class="btn btn-primary btn-lg active pl-5 pr-5
 							{if $product->count == 0}
 								disabled
 							{/if}
 							" role="button" aria-pressed="true">Add to cart</a>
+						*}
 						</div>
+						{form cartCount}
+							<span>{label count /}</span>
+							<span>{input count}</span>
+							<span>{input addToCart}</span>
+						{/form}
 					</div>
 				</div>
 			</div>
