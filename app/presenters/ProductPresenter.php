@@ -22,9 +22,14 @@ final class ProductPresenter extends BasePresenter
 
     public function handleAddToCart($id) {
 
-        $cart_products = unserialize($_COOKIE['cart']);
+        if(isset($_COOKIE['cart'])) {
+            $cart_products = unserialize($_COOKIE['cart']);
+        } else {
+            setcookie('cart', '', time() + 60 * 100000, '/');
+            //$cart_products = unserialize($_COOKIE['cart']);
+        }
 
-        if($cart_products) {
+        if(isset($cart_products)) {
             $cart = $cart_products + [
                 $id => 1
                 ];

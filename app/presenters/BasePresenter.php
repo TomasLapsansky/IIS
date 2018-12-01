@@ -38,5 +38,6 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     public function handleLogOut() {
         $this->user->logout();
+        $this->redirect("Homepage:");
     }
 }

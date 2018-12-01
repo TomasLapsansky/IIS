@@ -4,6 +4,7 @@ namespace App\AdminModule\Presenters;
 
 
 use Nette\Application\UI;
+use Nette\Security\Passwords;
 
 final class UserPresenter extends AdminBasePresenter {
 
@@ -139,7 +140,7 @@ final class UserPresenter extends AdminBasePresenter {
         }
 
         if($values->password) {
-            $sys_user->update(['password' => $values->password]);
+            $sys_user->update(['password' => Passwords::hash($values->password)]);
         }
 
         $this->redirect('User:');
