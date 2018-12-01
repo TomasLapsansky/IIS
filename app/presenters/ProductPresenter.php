@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use Nette\Application\UI;
 
 final class ProductPresenter extends BasePresenter
 {
@@ -34,5 +35,15 @@ final class ProductPresenter extends BasePresenter
         }
 
         setcookie('cart', serialize($cart), time() + 60 * 100000, '/');
+    }
+
+    protected function createComponentCartCount() {
+
+        $form = new UI\Form();
+        $form->addInteger("count", "Count:")->setRequired();
+        $form->addSubmit("addToCart", "Add to cart");
+        $form->onSuccess[] = [$this, "cartCountSuccedeed"];
+
+        return $form;
     }
 }
