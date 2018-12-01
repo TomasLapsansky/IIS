@@ -60,7 +60,6 @@ final class SettingsPresenter extends BasePresenter {
         $sys_user->update([
             'name' => $values->name,
             'surname' => $values->surname,
-            'password' => Passwords::hash($values->password),
             'city' => $values->city,
             'address' => $values->address,
             'zip' => $values->zip,
@@ -69,10 +68,10 @@ final class SettingsPresenter extends BasePresenter {
         ]);
 
         if($values->password) {
-            $sys_user->update(['password' => $values->password]);
+            $sys_user->update(['password' => Passwords::hash($values->password)]);
         }
 
-        $this->flashMessage("Vas profil bol upraveny", "success");
+        $this->flashMessage("Vas profil bol upraveny {$values->password} test", "success");
     }
 
 }
