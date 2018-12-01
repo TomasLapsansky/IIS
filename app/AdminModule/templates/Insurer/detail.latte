@@ -1,33 +1,38 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  producer detail {$id}
+  Insurer detail {$id}
 {/block}
 
 {block content}
+    <div class="col-12 d-flex justify-content-center">
+        <h1>{$insurer->name}</h1>
+    </div>
     <div class="col-10 offset-1">
-        <table class="table table-bproducered table-hover">
+        <table class="table table-binsurered table-hover">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Drug</th>
+                <th scope="col">Price</th>
             </tr>
             </thead>
             <tbody>
-            {*ifset $producers*}
-                <tr {*n:foreach="$producers as $producer"*}>
+            {*ifset $insurers*}
+                <tr {*n:foreach="$insurers as $insurer"*}>
                     <th scope="row">ID</th>
                     <td>DrugID</td>
+                    <td>Price</td>
                 </tr>
             {*else}
                 <tr>
-                    <td>producers drugs not found</td> {*TODO whole line}
+                    <td>Insurers drugs not found</td> {*TODO whole line}
                 </tr>
             {/ifset*}
             </tbody>
         </table>
     </div>
     <div class="col-10 offset-1 d-flex justify-content-end">
-        <a href="/admin/producer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Add drug</a>
+        <a href="/admin/insurer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Add drug</a>
     </div>
 {/block}

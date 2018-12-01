@@ -42,8 +42,35 @@
           </div>
           <div class="row">
             <div class="col-8 d-flex justify-content-between">
-            <a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
-            <a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+              <a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
+              <a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+          </div>
+          <div class="row"><div class="col-10 mt-5">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Drug name</th>
+                  <th scope="col">Count</th>
+                </tr>
+              </thead>
+              <tbody>
+              {*ifset $orders*}
+                <tr {*n:foreach="$orders as $order"*}>
+                  <td>Drug name</td>
+                  <td>count</td>
+                </tr>
+              {*else}
+                <tr>
+                  <td>orders not found</td> {*TODO whole line}
+                </tr>
+              {*/ifset*}
+              </tbody>
+            </table>
+          </div>
+          <div class="col-10 d-flex justify-content-end">
+              <a href="/admin/order/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New drug</a>
+          </div>
             </div>
           </div>
         </div>

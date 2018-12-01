@@ -1,0 +1,21 @@
+{layout '../parts/@layout.latte'}
+
+{block title}
+	Your profile
+{/block}
+
+{block content}
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-12 d-flex justify-content-start">
+				<span class="h4">MENO USERA</span>
+			</div>
+			<div class="col-6">
+            FOTO USERA				
+			</div>
+			<div class="col-6">
+                {control setUser}				
+			</div>
+		</div>
+	</div>
+{/block}

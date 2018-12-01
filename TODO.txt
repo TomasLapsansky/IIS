@@ -1,22 +1,22 @@
 FRONTEND
 
 product default
-zoznam ako na homepage
+	zoznam ako na homepage
 product detail
-add to cart, description
+	add to cart, description
 
 /cart/
-veci v kosiku, moznost upravy (delete, zmena poctu)
+	veci v kosiku, moznost upravy (delete, zmena poctu)
 /cart/summary/
-finalny vypis
+	finalny vypis
 
 (do kosika vsetko ako zoznamy pod sebou)
 
 /settings/
-nastavenia uzivatela + musi tam byt vramci nette formu aj pridanie avatara, ale avatara poriesime az na koniec ak to stihneme
+	nastavenia uzivatela + musi tam byt vramci nette formu aj pridanie avatara, ale avatara poriesime az na koniec ak to stihneme
 
 /order/
-zoznam objednavok uzivatela
+	zoznam objednavok uzivatela
 
 
 BACKEND
