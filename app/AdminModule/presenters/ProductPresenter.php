@@ -14,7 +14,8 @@ final class ProductPresenter extends AdminBasePresenter {
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->product = $this->productService->getByID($id);
+        $this->template->product = $product = $this->productService->getByID($id);
+        $this->template->producer = $this->producerService->getByID($product->id)->name;
     }
 
     public function actionAdd() {

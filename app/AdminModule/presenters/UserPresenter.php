@@ -16,7 +16,8 @@ final class UserPresenter extends AdminBasePresenter {
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->sys_user = $this->userService->getByID($id);
+        $this->template->sys_user = $sys_user = $this->userService->getByID($id);
+        $this->template->insurer = $this->insurerService->getByID($sys_user->insurer_id)->name;
     }
 
     public function actionAdd() {
