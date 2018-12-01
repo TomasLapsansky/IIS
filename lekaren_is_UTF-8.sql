@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 28, 2018 at 10:55 PM
+-- Generation Time: Dec 01, 2018 at 04:26 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -98,7 +98,8 @@ CREATE TABLE `order_product` (
 
 CREATE TABLE `producer` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `time_delivery` int(3) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
