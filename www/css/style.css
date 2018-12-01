@@ -49,3 +49,11 @@ a:hover {
 .product-min:hover {
     box-shadow: 0 0.5rem 1rem #7cbc0a !important;
 }
+
+.rotate{
+    height: fit-content !important;
+    transition: transform 0.5s ease-in-out;
+}
+.admin:hover .rotate{
+    transform: rotateZ(90deg);
+}
