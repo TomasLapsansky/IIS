@@ -19,7 +19,7 @@
 			<div class="col-2 d-flex justify-content-end pr-0">
 				{if $user->isLoggedIn()}
 					{if $user->isInRole('admin')}
-						<a href="/admin" class="d-flex align-items-base pr-3"><span>Admin</span><i class="material-icons">settings</i></a>
+						<a href="/admin" class="d-flex align-items-base pr-3 admin"><span>Admin</span><i class="material-icons rotate">settings</i></a>
 					{/if}
 					<a n:href="logOut!" class="d-flex align-items-base"><span>Log Out</span><i class="material-icons">power_settings_new</i></a>
 				{else}
