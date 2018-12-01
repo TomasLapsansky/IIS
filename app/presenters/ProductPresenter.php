@@ -7,20 +7,25 @@ use Nette\Application\UI;
 final class ProductPresenter extends BasePresenter
 {
 
-    public function actionDefault() {
+    public function renderDefault() {
 
         $this->template->products = $this->productService->getAll();
     }
 
-    public function actionDetail($id) {
+    public function renderDetail($id) {
 
         $this->template->id = $id;
         $this->template->product = $product = $this->productService->getByID($id);
 
         $this->template->producer = $this->producerService->getByID($product->producer);
+
+        $this['cartCount']->setDefaults([
+            'id' => $id,
+            'count' => 1
+        ]);
     }
 
-    public function handleAddToCart($id) {
+    public function cartCountSucceeded(UI\Form $form, $values) {
 
         if(isset($_COOKIE['cart'])) {
             $cart_products = unserialize($_COOKIE['cart']);
@@ -31,11 +36,11 @@ final class ProductPresenter extends BasePresenter
 
         if(isset($cart_products)) {
             $cart = $cart_products + [
-                $id => 1
+                $values->id => $values->count
                 ];
         } else {
             $cart = [
-                $id => 1    //count
+                $values->id => $values->count    //count
             ];
         }
 
@@ -46,8 +51,9 @@ final class ProductPresenter extends BasePresenter
 
         $form = new UI\Form();
         $form->addInteger("count", "Count:")->setRequired();
+        $form->addHidden("id");
         $form->addSubmit("addToCart", "Add to cart");
-        $form->onSuccess[] = [$this, "handleAddToCart"];
+        $form->onSuccess[] = [$this, "cartCountSucceeded"];
 
         return $form;
     }
