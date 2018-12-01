@@ -16,6 +16,22 @@ final class SettingsPresenter extends BasePresenter {
 
     }
 
+    public function actionDefault() {
+
+        $this->template->sys_user = $sys_user = $this->userService->getByID($this->user->getIdentity()->getId());
+
+        $this['setUser']->setDefaults([
+            'name' => $sys_user->name,
+            'surname' => $sys_user->surname,
+            'city' => $sys_user->city,
+            'address' => $sys_user->address,
+            'zip' => $sys_user->zip,
+            'country' => $sys_user->country,
+            'insurer' => $sys_user->insurer_id
+        ]);
+
+    }
+
     protected function createComponentSetUser()
     {
         $insurers = $this->insurerService->getAll();
@@ -29,7 +45,7 @@ final class SettingsPresenter extends BasePresenter {
         $form->addText('zip', 'ZIP:')->setRequired();
         $form->addText('country', 'Country:')->setRequired();
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->onSuccess[] = [$this, 'addFormSucceeded'];
+        $form->onSuccess[] = [$this, 'setUserSucceeded'];
         return $form;
     }
 
