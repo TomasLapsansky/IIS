@@ -6,7 +6,13 @@ use Nette\Application\UI;
 
 final class SettingsPresenter extends BasePresenter {
 
-    public function actionDefault() {
+    protected function startUp() {
+
+        parent::startup();
+
+        if(!$this->user->isLoggedIn()) {
+            $this->redirect(":Login:");
+        }
 
     }
 
