@@ -52,7 +52,7 @@
                     <div class="col-12 d-flex justify-content-between">
                         <span class="h5">ZIP:</span>
                         <span>
-                            {$sys_user->zip}
+                            {str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT)}
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">

@@ -15,10 +15,13 @@ final class OrderPresenter extends AdminBasePresenter {
     public function actionDetail($id) {
         $this->template->id = $id;
         $this->template->order = $this->orderService->getByID($id);
+
+        $this->template->productsOrder = $this->orderDrugService->getAll()->where('order_id', $id);
+        $this->template->products = $this->productService->getAll();
     }
 
     public function actionAdd() {
-        
+        $this->redirect("Order:");
     }
 
     public function actionEdit($id) {
