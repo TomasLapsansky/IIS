@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 02, 2018 at 12:40 PM
+-- Generation Time: Dec 02, 2018 at 02:36 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -89,7 +89,8 @@ CREATE TABLE `order_product` (
   `zip` varchar(6) CHARACTER SET utf8 DEFAULT NULL,
   `address` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `user_id` int(10) NOT NULL,
-  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
