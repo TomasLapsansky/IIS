@@ -72,22 +72,14 @@ final class OrderPresenter extends AdminBasePresenter {
 
     protected function createComponentEditForm()
     {
-        $insurers = $this->insurerService->getAll();
+        //$insurers = $this->insurerService->getAll();
 
         $form = new UI\Form();
-        $form->addText('name', 'Meno:')->setRequired();
-        $form->addText('surname', 'Priezvisko:')->setRequired();
-        $form->addEmail('email', 'Email:')->setRequired();
-        $form->addPassword('password', 'Heslo:');
-        $form->addSelect('role', 'Role:', [
-            'user',
-            'admin'
-        ])->setRequired();
-        $form->addText('city', 'Mesto:')->setRequired();
-        $form->addText('address', 'Adresa:')->setRequired();
+        $form->addText('status', 'Status:')->setRequired();
+        $form->addText('city', 'City:')->setRequired();
         $form->addText('zip', 'ZIP:')->setRequired();
-        $form->addText('country', 'Stat:')->setRequired();
-        $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
+        $form->addText('address', 'Address:')->setRequired();
+        //$form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
         $form->addSubmit('edit', 'Edit');
         $form->addHidden('id');
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
