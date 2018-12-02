@@ -5,6 +5,7 @@ namespace App\AdminModule\Presenters;
 use App\Presenters\BasePresenter;
 use Models\Producer;
 use Nette;
+use Nette\Application\UI;
 
 final class ProducerPresenter extends AdminBasePresenter {
     
@@ -21,6 +22,43 @@ final class ProducerPresenter extends AdminBasePresenter {
         $this->template->id = $id;
         $this->template->producer = $this->producerService->getByID($id);
         $this->template->products = $this->productService->getAll()->where('producer', $id);
+    }
+
+    public function actionEdit($id) {
+        $producer = $this->producerService->getByID($id);
+        $this->template->producer = $producer;
+
+        $this['editForm']->setDefaults([
+            'name' => $producer->name,
+            'time' => $producer->time_delivery,
+            'id' => $producer->id
+        ]);
+
+    }
+
+    protected function createComponentEditForm()
+    {
+        $insurers = $this->insurerService->getAll();
+
+        $form = new UI\Form();
+        $form->addHidden("id");        
+        $form->addText('name', 'Producer name:')->setRequired();
+        $form->addInteger('time', 'Delivery time:')->setRequired();
+        $form->addSubmit("edit", "save");
+        $form->onSuccess[] = [$this, 'editOnSucceeded'];
+        return $form;
+    }
+
+    protected function createComponentAddForm()
+    {
+        $insurers = $this->insurerService->getAll();
+
+        $form = new UI\Form(); 
+        $form->addText('name', 'Producer name:')->setRequired();
+        $form->addInteger('time', 'Delivery time:')->setRequired();
+        $form->addSubmit("add", "Add new");
+        $form->onSuccess[] = [$this, 'addOnSucceeded'];
+        return $form;
     }
 
 

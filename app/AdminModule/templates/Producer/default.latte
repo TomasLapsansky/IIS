@@ -11,6 +11,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col">Delivery time</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -19,6 +20,7 @@
                 <tr n:foreach="$producers as $producer">
                     <th scope="row">{$producer->id}</th>
                     <td>{$producer->name}</td>
+                    <td>{$producer->time_delivery}</td>
                     <td style="text-align:center;">
                         <a href="/admin/producer/{$producer->id}"><i class="material-icons" style="color:blue;">description</i></a>
                         <a href="/admin/producer/{$producer->id}/edit"><i class="material-icons" style="color:grey;">build</i></a>

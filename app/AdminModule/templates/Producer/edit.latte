@@ -1,13 +1,13 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  order edit
+  producer edit
 {/block}
 
 {block content}
-    {if $order}
+    {if $producer}
         <div class="col-10 offset-1">
-            {control editForm}
+        {control editForm}
         </div>
     {else}
         Produkt neexistuje {*TODO pridat hlasku*}

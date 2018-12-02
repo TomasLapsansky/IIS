@@ -67,11 +67,12 @@ final class ProductPresenter extends AdminBasePresenter {
 
     protected function createComponentEditForm()
     {
+        $producers = $this->producerService->getAll();
 
         $form = new UI\Form();
         $form->addText('name', 'Meno:')->setRequired();
         $form->addText('count', 'Pocet:')->setRequired();
-        $form->addText('producer', 'Vyrobca:')->setRequired();
+        $form->addSelect('producer', 'Vyrobca:', $producers->fetchPairs('id', 'name'))->setRequired();        
         $form->addText('price', 'Cena:')->setRequired();
         $form->addTextArea('description', 'Popis:')->setRequired();
         $form->addSubmit('edit', 'Edit');
