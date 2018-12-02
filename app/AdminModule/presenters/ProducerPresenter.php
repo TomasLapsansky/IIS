@@ -38,27 +38,45 @@ final class ProducerPresenter extends AdminBasePresenter {
 
     protected function createComponentEditForm()
     {
-        $insurers = $this->insurerService->getAll();
-
         $form = new UI\Form();
         $form->addHidden("id");        
         $form->addText('name', 'Producer name:')->setRequired();
         $form->addInteger('time', 'Delivery time:')->setRequired();
         $form->addSubmit("edit", "save");
-        $form->onSuccess[] = [$this, 'editOnSucceeded'];
+        $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
+    }
+
+    public function editFormSucceeded(UI\Form $form, $values)
+    {
+        $producer = $this->producerService->getByID($values->id);
+
+        $producer->update([
+            'name' => $values->name,
+            'time_delivery' => $values->time
+        ]);
+
+        $this->redirect('Producer:');
     }
 
     protected function createComponentAddForm()
     {
-        $insurers = $this->insurerService->getAll();
-
         $form = new UI\Form(); 
         $form->addText('name', 'Producer name:')->setRequired();
         $form->addInteger('time', 'Delivery time:')->setRequired();
         $form->addSubmit("add", "Add new");
-        $form->onSuccess[] = [$this, 'addOnSucceeded'];
+        $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
+    }
+
+    public function addFormSucceeded(UI\Form $form, $values)
+    {
+        $this->producerService->insert([
+            'name' => $values->name,
+            'time_delivery' => $values->time
+        ]);
+
+        $this->redirect('Producer:');
     }
 
 

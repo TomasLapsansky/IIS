@@ -92,30 +92,16 @@ final class OrderPresenter extends AdminBasePresenter {
 
     public function editFormSucceeded(UI\Form $form, $values)
     {
-        $sys_user = $this->userService->getByID($values->id);
+        $sys_user = $this->orderService->getByID($values->id);
 
         $sys_user->update([
-            'name' => $values->name,
-            'surname' => $values->surname,
-            'email' => $values->email,
+            'status' => $values->status,
             'city' => $values->city,
             'address' => $values->address,
             'zip' => $values->zip,
-            'country' => $values->country,
-            'insurer_id' => $values->insurer
         ]);
 
-        if($values->role == 'user') {
-            $sys_user->update(['role' => 'user']);
-        } elseif($values->role == 'admin') {
-            $sys_user->update(['role' => 'admin']);
-        }
-
-        if($values->password) {
-            $sys_user->update(['password' => $values->password]);
-        }
-
-        $this->redirect('User:');
+        $this->redirect('Order:');
     }
 
 }

@@ -43,25 +43,41 @@ final class InsurerPresenter extends AdminBasePresenter {
 
     protected function createComponentEditForm()
     {
-        $insurers = $this->insurerService->getAll();
-
         $form = new UI\Form();
         $form->addHidden("id");        
         $form->addText('name', 'Insurer name:')->setRequired();
         $form->addSubmit("edit", "save");
-        $form->onSuccess[] = [$this, 'editOnSucceeded'];
+        $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
+    }
+
+    public function editFormSucceeded(UI\Form $form, $values)
+    {
+        $insurer = $this->insurerService->getByID($values->id);
+
+        $insurer->update([
+            'name' => $values->name,
+        ]);
+
+        $this->redirect('Insurer:');
     }
 
     protected function createComponentAddForm()
     {
-        $insurers = $this->insurerService->getAll();
-
         $form = new UI\Form();    
         $form->addText('name', 'Insurer name:')->setRequired();
-        $form->addSubmit("add", "Add new");
-        $form->onSuccess[] = [$this, 'addOnSucceeded'];
+        $form->addSubmit("add", "Add");
+        $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
+    }
+
+    public function addFormSucceeded(UI\Form $form, $values)
+    {
+        $this->insurerService->insert([
+            'name' => $values->name,
+        ]);
+
+        $this->redirect('Insurer:');
     }
 
 }
