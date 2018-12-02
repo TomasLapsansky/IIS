@@ -46,6 +46,17 @@ final class ProducerPresenter extends AdminBasePresenter {
         return $form;
     }
 
+    protected function createComponentAddForm()
+    {
+        $insurers = $this->insurerService->getAll();
+
+        $form = new UI\Form(); 
+        $form->addText('name', 'Producer name:')->setRequired();
+        $form->addSubmit("add", "Add new");
+        $form->onSuccess[] = [$this, 'addOnSucceeded'];
+        return $form;
+    }
+
 
 
 }
