@@ -71,6 +71,17 @@ final class InsurerPresenter extends AdminBasePresenter {
         return $form;
     }
 
+    protected function createComponentAddDrugForm()
+    {
+        $drug = $this->productService->getAll();
+
+        $form = new UI\Form();
+        $form->addSelect('producer', 'Vyrobca:', $drug->fetchPairs('id', 'name'))->setRequired();        
+        $form->addSubmit("add", "Add");
+        $form->onSuccess[] = [$this, 'addFormSucceeded'];
+        return $form;
+    }
+
     public function addFormSucceeded(UI\Form $form, $values)
     {
         $this->insurerService->insert([
