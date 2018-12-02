@@ -10,6 +10,7 @@ final class ProductPresenter extends AdminBasePresenter {
         if ($this->productService->count() != 0) {
             $this->template->products = $this->productService->getAll();
         }
+        $this->template->producers = $this->producerService;
     }
 
     public function actionDetail($id) {

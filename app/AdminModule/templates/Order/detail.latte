@@ -1,86 +1,95 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  order {$id}
+	Order {$id}
 {/block}
 
 {block content}
-  {if $order}
-      <div class="row">
-        <div class="col-12">
-          <h1>{$order->id}</h1>
-        </div>
-      </div>
+	{if $order}
+		<div class="row">
+			<div class="col-12">
+				<h1>{$order->id}</h1>
+			</div>
+		</div>
 
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="row">
-            <div class="col-8 d-flex justify-content-between">
-              <h5>Status:</h5>
-              <p>
-                {$order->status}
-              </p>
-            </div>
-            <div class="col-8 d-flex justify-content-between">
-              <h5>ZIP:</h5>
-              <p>
-                {$order->zip}
-              </p>
-            </div>
-            <div class="col-8 d-flex justify-content-between">
-              <h5>City:</h5>
-              <p>
-                {$order->city}
-              </p>
-            </div>
-            <div class="col-8 d-flex justify-content-between">
-              <h5>Address:</h5>
-              <p>
-                {$order->address}
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-8 d-flex justify-content-between">
-              <a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
-              <a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
-            </div>
-          </div>
-          <div class="row"><div class="col-10 mt-5">
-            <table class="table table-bordered table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Drug name</th>
-                  <th scope="col">Count</th>
-                </tr>
-              </thead>
-              <tbody>
-              {*ifset $orders*}
-                <tr {*n:foreach="$orders as $order"*}>
-                  <td>Drug name</td>
-                  <td>count</td>
-                </tr>
-              {*else}
-                <tr>
-                  <td>orders not found</td> {*TODO whole line}
-                </tr>
-              {*/ifset*}
-              </tbody>
-            </table>
-          </div>
-          <div class="col-10 d-flex justify-content-end">
-              <a href="/admin/order/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New drug</a>
-          </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    {else}
-        <div class="row">
-          <div class="col-12">
-            <h1>order with id {$id} doesn't exist</h1>
-          </div>
-        </div>
-    {/if}
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="row">
+					<div class="col-8 d-flex justify-content-between">
+						<h5>User:</h5>
+						<p>
+							{$sys_user->name} {$sys_user->surname}
+						</p>
+					</div>
+					<div class="col-8 d-flex justify-content-between">
+						<h5>Status:</h5>
+						<p>
+							{$order->status}
+						</p>
+					</div>
+					<div class="col-8 d-flex justify-content-between">
+						<h5>ZIP:</h5>
+						<p>
+							{$order->zip}
+						</p>
+					</div>
+					<div class="col-8 d-flex justify-content-between">
+						<h5>City:</h5>
+						<p>
+							{$order->city}
+						</p>
+					</div>
+					<div class="col-8 d-flex justify-content-between">
+						<h5>Address:</h5>
+						<p>
+							{$order->address}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8 d-flex justify-content-between">
+						<a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button"
+						   aria-pressed="true">Edit</a>
+						<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-10 mt-5">
+						<table class="table table-bordered table-hover">
+							<thead class="thead-dark">
+							<tr>
+								<th scope="col">Drug name</th>
+								<th scope="col">Count</th>
+							</tr>
+							</thead>
+							<tbody>
+							{if $productsOrder->count() != 0}
+								<tr n:foreach="$productsOrder as $productOrder">
+									<td>{$products->where('id', $productOrder->drug_id)->fetch()->name}</td>
+									<td>{$productOrder->count}</td>
+								</tr>
+							{else}
+								<tr>
+									<td>Products not found</td>
+								</tr>
+							{/if}
+							</tbody>
+						</table>
+					</div>
+					{*<div class="col-10 d-flex justify-content-end">
+						<a href="/admin/order/add" class="btn btn-primary btn-md active" role="button"
+						   aria-pressed="true">New drug</a>
+					</div>*}
+				</div>
+			</div>
+		</div>
+		</div>
+	{else}
+		<div class="row">
+			<div class="col-12">
+				<h1>order with id {$id} doesn't exist</h1>
+			</div>
+		</div>
+	{/if}
 
 {/block}
