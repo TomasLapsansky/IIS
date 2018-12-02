@@ -5,6 +5,7 @@ namespace App\AdminModule\Presenters;
 use App\Presenters\BasePresenter;
 use Models\Producer;
 use Nette;
+use Nette\Application\UI;
 
 final class ProducerPresenter extends AdminBasePresenter {
     
@@ -20,6 +21,29 @@ final class ProducerPresenter extends AdminBasePresenter {
     public function actionDetail($id) {
         $this->template->id = $id;
         $this->template->insurer = $this->insurerService->getByID($id);
+    }
+
+    public function actionEdit($id) {
+        $producer = $this->producerService->getByID($id);
+        $this->template->producer = $producer;
+
+        $this['editForm']->setDefaults([
+            'name' => $producer->name,
+            'id' => $producer->id
+        ]);
+
+    }
+
+    protected function createComponentEditForm()
+    {
+        $insurers = $this->insurerService->getAll();
+
+        $form = new UI\Form();
+        $form->addHidden("id");        
+        $form->addText('name', 'Producer name:')->setRequired();
+        $form->addSubmit("edit", "save");
+        $form->onSuccess[] = [$this, 'editOnSucceeded'];
+        return $form;
     }
 
 
