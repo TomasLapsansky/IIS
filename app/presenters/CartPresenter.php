@@ -25,12 +25,26 @@ final class CartPresenter extends BasePresenter {
     protected function createComponentSummaryForm() {
 
         $form = new UI\Form();
-        $form->addInteger("count", "Count:")->setRequired();
-        $form->addHidden("id");
         $form->addSubmit("summary", "Proceed to summary");
-        $form->onSuccess[] = [$this, "someSpecialFunction"];
+        $form->onSuccess[] = [$this, "sendToSummarySuccedeed"];
 
         return $form;
+    }
+
+    public function sendToSummarySuccedeed(UI\Form $form, $values) {
+        $cart_products = unserialize($_COOKIE['cart']);
+
+        $products_summary =[];
+
+        foreach ($cart_products as $product_id => $count) {
+            $product = $this->productService->getByIDActive($product_id);
+            if($product) {
+                $prod_count =$form->getHttpData($form::DATA_LINE, '{$product_id}');
+                $products_summary[$product_id] = array($product, $prod_count);
+            }
+        }
+
+        $this->template->products = $products_summary;
     }
 
 }
