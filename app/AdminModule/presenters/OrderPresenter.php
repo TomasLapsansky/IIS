@@ -7,18 +7,20 @@ use Nette\Application\UI;
 final class OrderPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
-        if ($this->orderService->count() != 0) {
-            $this->template->orders = $this->orderService->getAll();
+        if ($this->orderService->getAllActive()->count() != 0) {
+            $this->template->orders = $this->orderService->getAllActive();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->order = $order = $this->orderService->getByID($id);
-        $this->template->sys_user = $this->userService->getByID($order->user_id);
+        $this->template->order = $order = $this->orderService->getByIDActive($id);
+        if($order) {
+            $this->template->sys_user = $this->userService->getByID($order->user_id);
 
-        $this->template->productsOrder = $this->orderDrugService->getAll()->where('order_id', $id);
-        $this->template->products = $this->productService->getAll();
+            $this->template->productsOrder = $this->orderDrugService->getAll()->where('order_id', $id);
+            $this->template->products = $this->productService->getAll();
+        }
     }
 
     public function actionAdd() {
@@ -41,8 +43,6 @@ final class OrderPresenter extends AdminBasePresenter {
 
     protected function createComponentAddForm()
     {
-        $insurers = $this->insurerService->getAll();
-
         $form = new UI\Form();
         $form->addText('user_id', 'Uzivatel ID:')->setRequired();
         $form->addText('city', 'Mesto:')->setRequired();
@@ -104,4 +104,12 @@ final class OrderPresenter extends AdminBasePresenter {
         $this->redirect('Order:');
     }
 
+    public function handleDelete($id)
+    {
+        $this->orderService->getByID($id)->update([
+            'state' => 0
+        ]);
+
+        $this->redirect("Order:");
+    }
 }

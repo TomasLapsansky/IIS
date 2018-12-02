@@ -7,16 +7,18 @@ use Nette\Application\UI;
 final class ProductPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
-        if ($this->productService->count() != 0) {
-            $this->template->products = $this->productService->getAll();
+        if ($this->productService->getAllActive()->count() != 0) {
+            $this->template->products = $this->productService->getAllActive();
         }
         $this->template->producers = $this->producerService;
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->product = $product = $this->productService->getByID($id);
-        $this->template->producer = $this->producerService->getByID($product->id)->name;
+        $this->template->product = $product = $this->productService->getByIDActive($id);
+        if($product) {
+            $this->template->producer = $this->producerService->getByID($product->id)->name;
+        }
     }
 
     public function actionAdd() {
@@ -24,17 +26,19 @@ final class ProductPresenter extends AdminBasePresenter {
     }
 
     public function actionEdit($id) {
-        $product = $this->productService->getByID($id);
+        $product = $this->productService->getByIDActive($id);
         $this->template->product = $product;
 
-        $this['editForm']->setDefaults([
-            'name' => $product->name,
-            'count' => $product->count,
-            'producer' => $product->producer,
-            'price' => $product->price,
-            'description' => $product->description,
-            'id' => $product->id
-        ]);
+        if($product) {
+            $this['editForm']->setDefaults([
+                'name' => $product->name,
+                'count' => $product->count,
+                'producer' => $product->producer,
+                'price' => $product->price,
+                'description' => $product->description,
+                'id' => $product->id
+            ]);
+        }
     }
 
     protected function createComponentAddForm()
@@ -94,6 +98,13 @@ final class ProductPresenter extends AdminBasePresenter {
         ]);
 
         $this->redirect('Product:');
+    }
+
+    public function handleDelete($id)
+    {
+        $this->productService->getByID($id)->update([
+            'state' => 0
+        ]);
     }
 
 }

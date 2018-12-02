@@ -13,19 +13,21 @@ final class ProducerPresenter extends AdminBasePresenter {
     public $producerService;
 
     public function actionDefault() {
-        if ($this->producerService->count() != 0) {
-            $this->template->producers = $this->producerService->getAll();
+        if ($this->producerService->getAllActive()->count() != 0) {
+            $this->template->producers = $this->producerService->getAllActive();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->producer = $this->producerService->getByID($id);
-        $this->template->products = $this->productService->getAll()->where('producer', $id);
+        $this->template->producer = $producer = $this->producerService->getByIDActive($id);
+        if($producer) {
+            $this->template->products = $this->productService->getAllActive()->where('producer', $id);
+        }
     }
 
     public function actionEdit($id) {
-        $producer = $this->producerService->getByID($id);
+        $producer = $this->producerService->getByIDActive($id);
         $this->template->producer = $producer;
 
         $this['editForm']->setDefaults([
@@ -79,6 +81,11 @@ final class ProducerPresenter extends AdminBasePresenter {
         $this->redirect('Producer:');
     }
 
-
+    public function handleDelete($id)
+    {
+        $this->producerService->getByID($id)->update([
+            'state' => 0
+        ]);
+    }
 
 }

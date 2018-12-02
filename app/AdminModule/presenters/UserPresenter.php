@@ -10,14 +10,17 @@ final class UserPresenter extends AdminBasePresenter {
 
     public function actionDefault() {
         if ($this->userService->count() != 0) {
-            $this->template->users = $this->userService->getAll();
+            $this->template->users = $this->userService->getAllActive();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->sys_user = $sys_user = $this->userService->getByID($id);
-        $this->template->insurer = $this->insurerService->getByID($sys_user->insurer_id);
+        $this->template->sys_user = $sys_user = $this->userService->getByIDActive($id);
+        if($sys_user) {
+            $this->template->insurer = $this->insurerService->getByID($sys_user->insurer_id);
+        }
+
     }
 
     public function actionAdd() {
@@ -25,7 +28,7 @@ final class UserPresenter extends AdminBasePresenter {
     }
 
     public function actionEdit($id) {
-        $sys_user = $this->userService->getByID($id);
+        $sys_user = $this->userService->getByIDActive($id);
         $this->template->sys_user = $sys_user;
 
         $this['editForm']->setDefaults([
@@ -50,7 +53,7 @@ final class UserPresenter extends AdminBasePresenter {
 
     protected function createComponentAddForm()
     {
-        $insurers = $this->insurerService->getAll();
+        $insurers = $this->insurerService->getAllActive();
 
         $form = new UI\Form();
         $form->addText('name', 'Meno:')->setRequired();
@@ -145,6 +148,15 @@ final class UserPresenter extends AdminBasePresenter {
         }
 
         $this->redirect('User:');
+    }
+
+    public function handleDelete($id)
+    {
+        $this->userService->getByID($id)->update([
+            'state' => 0
+        ]);
+
+        $this->redirect("User:");
     }
 
 }

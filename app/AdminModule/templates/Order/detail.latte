@@ -50,7 +50,7 @@
 					<div class="col-8 d-flex justify-content-between">
 						<a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button"
 						   aria-pressed="true">Edit</a>
-						<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+						<a n:href="delete! $order->id" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
 					</div>
 				</div>
 				<div class="row">
@@ -87,7 +87,7 @@
 	{else}
 		<div class="row">
 			<div class="col-12">
-				<h1>order with id {$id} doesn't exist</h1>
+				<h1>Order with id {$id} doesn't exist</h1>
 			</div>
 		</div>
 	{/if}

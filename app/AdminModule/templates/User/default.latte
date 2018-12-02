@@ -36,7 +36,7 @@
                             <td style="text-align:center;">
                                 <a href="/admin/user/{$sys_user->id}"><i class="material-icons" style="color:blue;">description</i></a>
                                 <a href="/admin/user/{$sys_user->id}/edit"><i class="material-icons" style="color:grey;">build</i></a>
-                                <a href="#"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
+                                <a n:href="delete! $sys_user->id"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
                             </td>
                         </tr>
                     {else}

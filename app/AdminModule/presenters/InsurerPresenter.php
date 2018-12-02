@@ -13,14 +13,14 @@ final class InsurerPresenter extends AdminBasePresenter {
     public $insurerService;
 
     public function actionDefault() {
-        if ($this->insurerService->count() != 0) {
-            $this->template->insurers = $this->insurerService->getAll();
+        if ($this->insurerService->getAllActive()->count() != 0) {
+            $this->template->insurers = $this->insurerService->getAllActive();
         }
     }
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->insurer = $this->insurerService->getByID($id);
+        $this->template->insurer = $this->insurerService->getByIDActive($id);
 
         $this->template->insuredProducts = $this->drugInsurerService->getAll()->where('insurer_id', $id);
         $this->template->products = $this->productService;
@@ -89,6 +89,13 @@ final class InsurerPresenter extends AdminBasePresenter {
         ]);
 
         $this->redirect('Insurer:');
+    }
+
+    public function handleDelete($id)
+    {
+        $this->insurerService->getByID($id)->update([
+            'state' => 0
+        ]);
     }
 
 }

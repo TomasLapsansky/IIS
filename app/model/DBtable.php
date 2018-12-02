@@ -23,8 +23,16 @@ abstract class DBtable {
         return $this->getTable();
     }
 
+    public function getAllActive() {
+        return $this->getTable()->where('state', 1);
+    }
+
     public function getByID($id) {
         return $this->getTable()->get($id);
+    }
+
+    public function getByIDActive($id) {
+        return $this->getAllActive()->get($id);
     }
 
     public function insert(array $array) {
@@ -32,6 +40,6 @@ abstract class DBtable {
     }
 
     public function count() {
-        return $this->getTable()->count();
+        return $this->getAllActive()->count();
     }
 }
