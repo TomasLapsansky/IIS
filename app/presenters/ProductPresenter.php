@@ -9,20 +9,22 @@ final class ProductPresenter extends BasePresenter
 
     public function renderDefault() {
 
-        $this->template->products = $this->productService->getAll();
+        $this->template->products = $this->productService->getAllActive();
     }
 
     public function renderDetail($id) {
 
         $this->template->id = $id;
-        $this->template->product = $product = $this->productService->getByID($id);
+        $this->template->product = $product = $this->productService->getByIDActive($id);
 
-        $this->template->producer = $this->producerService->getByID($product->producer);
+        if($product) {
+            $this->template->producer = $this->producerService->getByID($product->producer);
 
-        $this['cartCount']->setDefaults([
-            'id' => $id,
-            'count' => 1
-        ]);
+            $this['cartCount']->setDefaults([
+                'id' => $id,
+                'count' => 1
+            ]);
+        }
     }
 
     public function cartCountSucceeded(UI\Form $form, $values) {

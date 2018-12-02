@@ -1,7 +1,9 @@
 {layout '../parts/@layout.latte'}
 
 {block title}
-	{$product->name}
+	{if $product}
+		{$product->name}
+	{/if}
 {/block}
 
 {block content}
@@ -57,12 +59,12 @@
 					</div>
 					<div class="row">
 						<div class="col-4 offset-4">
-						{*	<a n:href="addToCart! $product->id" class="btn btn-primary btn-lg active pl-5 pr-5
-							{if $product->count == 0}
-								disabled
-							{/if}
-							" role="button" aria-pressed="true">Add to cart</a>
-						*}
+							{*	<a n:href="addToCart! $product->id" class="btn btn-primary btn-lg active pl-5 pr-5
+								{if $product->count == 0}
+									disabled
+								{/if}
+								" role="button" aria-pressed="true">Add to cart</a>
+							*}
 						</div>
 						{form cartCount}
 							<span>{label count /}</span>

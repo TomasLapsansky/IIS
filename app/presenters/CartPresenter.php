@@ -13,8 +13,10 @@ final class CartPresenter extends BasePresenter {
         $template_products = [];
 
         foreach ($cart_products as $product_id => $count) {
-            $product = $this->productService->getByID($product_id);
-            $template_products[$product_id] = array($product, $count);
+            $product = $this->productService->getByIDActive($product_id);
+            if($product) {
+                $template_products[$product_id] = array($product, $count);
+            }
         }
 
         $this->template->products = $template_products;
