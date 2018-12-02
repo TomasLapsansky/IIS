@@ -29,6 +29,7 @@ final class ProducerPresenter extends AdminBasePresenter {
 
         $this['editForm']->setDefaults([
             'name' => $producer->name,
+            'time' => $producer->time_delivery,
             'id' => $producer->id
         ]);
 
@@ -41,6 +42,7 @@ final class ProducerPresenter extends AdminBasePresenter {
         $form = new UI\Form();
         $form->addHidden("id");        
         $form->addText('name', 'Producer name:')->setRequired();
+        $form->addInteger('time', 'Delivery time:')->setRequired();
         $form->addSubmit("edit", "save");
         $form->onSuccess[] = [$this, 'editOnSucceeded'];
         return $form;
@@ -52,6 +54,7 @@ final class ProducerPresenter extends AdminBasePresenter {
 
         $form = new UI\Form(); 
         $form->addText('name', 'Producer name:')->setRequired();
+        $form->addInteger('time', 'Delivery time:')->setRequired();
         $form->addSubmit("add", "Add new");
         $form->onSuccess[] = [$this, 'addOnSucceeded'];
         return $form;
