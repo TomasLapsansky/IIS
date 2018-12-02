@@ -12,23 +12,23 @@
         <table class="table table-binsurered table-hover">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Drug</th>
                 <th scope="col">Price</th>
+                <th scope="col">Discounted</th>
             </tr>
             </thead>
             <tbody>
-            {*ifset $insurers*}
-                <tr {*n:foreach="$insurers as $insurer"*}>
-                    <th scope="row">ID</th>
-                    <td>DrugID</td>
-                    <td>Price</td>
+            {if $insuredProducts->count() != 0}
+                <tr n:foreach="$insuredProducts as $insuredProduct">
+                    <td>{$products->getById($insuredProduct->drug_id)->name}</td>
+                    <td>{$products->getById($insuredProduct->drug_id)->price} €</td>
+                    <td>{$products->getById($insuredProduct->drug_id)->price - $insuredProduct->price} €</td>
                 </tr>
-            {*else}
+            {else}
                 <tr>
-                    <td>Insurers drugs not found</td> {*TODO whole line}
+                    <td>Insurers drugs not found</td>
                 </tr>
-            {/ifset*}
+            {/if}
             </tbody>
         </table>
     </div>

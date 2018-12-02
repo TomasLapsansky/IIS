@@ -20,6 +20,9 @@ final class InsurerPresenter extends AdminBasePresenter {
     public function actionDetail($id) {
         $this->template->id = $id;
         $this->template->insurer = $this->insurerService->getByID($id);
+
+        $this->template->insuredProducts = $this->drugInsurerService->getAll()->where('insurer_id', $id);
+        $this->template->products = $this->productService;
     }
 
     public function actionAdd() {
