@@ -19,7 +19,8 @@ final class ProducerPresenter extends AdminBasePresenter {
 
     public function actionDetail($id) {
         $this->template->id = $id;
-        $this->template->insurer = $this->insurerService->getByID($id);
+        $this->template->producer = $this->producerService->getByID($id);
+        $this->template->products = $this->productService->getAll()->where('producer', $id);
     }
 
 

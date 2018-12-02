@@ -5,25 +5,29 @@
 {/block}
 
 {block content}
+    {$producer->name}<br>
+    {$producer->time_delivery} days
     <div class="col-10 offset-1">
         <table class="table table-bproducered table-hover">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Drug</th>
+                <th scope="col">Price</th>
             </tr>
             </thead>
             <tbody>
-            {*ifset $producers*}
-                <tr {*n:foreach="$producers as $producer"*}>
-                    <th scope="row">ID</th>
-                    <td>DrugID</td>
+            {if $products->count() != 0}
+                <tr n:foreach="$products as $product">
+                    <th scope="row">{$product->id}</th>
+                    <td>{$product->name}</td>
+                    <td>{$product->price} €</td>
                 </tr>
-            {*else}
+            {else}
                 <tr>
-                    <td>producers drugs not found</td> {*TODO whole line}
+                    <td>producers drugs not found</td>
                 </tr>
-            {/ifset*}
+            {/if}
             </tbody>
         </table>
     </div>
