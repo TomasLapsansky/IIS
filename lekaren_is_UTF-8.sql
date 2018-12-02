@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 01, 2018 at 04:26 PM
+-- Generation Time: Dec 02, 2018 at 12:40 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -34,7 +34,8 @@ CREATE TABLE `drug` (
   `price` int(10) UNSIGNED NOT NULL,
   `description` text CHARACTER SET utf8 NOT NULL,
   `image` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/product/default.png',
-  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -58,7 +59,8 @@ CREATE TABLE `drug_insurer` (
 
 CREATE TABLE `insurer` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -99,7 +101,8 @@ CREATE TABLE `order_product` (
 CREATE TABLE `producer` (
   `id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `time_delivery` int(3) UNSIGNED NOT NULL
+  `time_delivery` int(3) UNSIGNED NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -121,7 +124,8 @@ CREATE TABLE `user` (
   `country` varchar(50) CHARACTER SET utf8 NOT NULL,
   `insurer_id` int(11) DEFAULT NULL,
   `avatar` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '/image/avatar/default.png',
-  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 --
