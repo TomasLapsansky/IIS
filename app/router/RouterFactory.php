@@ -35,14 +35,14 @@ final class RouterFactory
         $router[] = new Route("admin[/<presenter>[/<action>[/<id [0-9]+>]]]", [
             "module" => "Admin",
             "presenter" => "Default",
-            "action" => "Default"
+            "action" => "default"
         ]);
 
         // REGISTER
 
         $router[] = new Route("[<presenter>/[<action>[/<id [0-9]+>]]]", [
             "presenter" => "Homepage",
-            "action" => "Default"
+            "action" => "default"
         ]);
 
         return $router;
