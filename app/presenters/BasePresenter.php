@@ -46,6 +46,7 @@ class BasePresenter extends Nette\Application\UI\Presenter
 
     public function handleLogOut() {
         $this->user->logout();
+        $this->flashMessage("Boli ste uspesne odhlaseny", "info");
         $this->redirect("Homepage:");
     }
 }

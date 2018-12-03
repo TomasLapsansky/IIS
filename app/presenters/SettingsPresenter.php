@@ -12,6 +12,7 @@ final class SettingsPresenter extends BasePresenter {
         parent::startup();
 
         if(!$this->user->isLoggedIn()) {
+            $this->flashMessage("Je potrebne sa prihlasit", "warn");
             $this->redirect(":Login:");
         }
 
@@ -71,7 +72,7 @@ final class SettingsPresenter extends BasePresenter {
             $sys_user->update(['password' => Passwords::hash($values->password)]);
         }
 
-        $this->flashMessage("Vas profil bol upraveny {$values->password} test", "success");
+        $this->flashMessage("Vas profil bol upraveny", "success");
     }
 
 }

@@ -37,34 +37,17 @@ final class ProductPresenter extends BasePresenter
 
         if($values->count > 0) {
 
-            /*if (isset($_COOKIE['cart'])) {
-                $cart_products = unserialize($_COOKIE['cart']);
-            } else {
-                setcookie('cart', '', time() + 60 * 100000, '/');
-                //$cart_products = unserialize($_COOKIE['cart']);
-            }
-
-            if (isset($cart_products)) {
-                $cart = $cart_products + [
-                        $values->id => $values->count
-                    ];
-            } else {
-                $cart = [
-                    $values->id => $values->count    //count
-                ];
-            }
-
-            setcookie('cart', serialize($cart), time() + 60 * 100000, '/');*/
-
             if (!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = array();
             }
-            //if(isset($_SESSION['cart'][]))
+            //if(isset($_SESSION['cart'][]))    TODO
             $bag = array(
                 "productId" => $values->id,
                 "quantity"  => $values->count
             );
             $_SESSION['cart'][] = $bag;
+
+            $this->flashMessage("Produkt bol uspesne pridany do kosika", "info");
 
         } else {
             $this->flashMessage("Mnozstvo musi byt aspon 1", "warning");
