@@ -26,8 +26,8 @@ final class InsurerPresenter extends AdminBasePresenter {
         $this->template->products = $this->productService;
     }
 
-    public function actionAdd() {
-        
+    public function actionAddDrug($id) {
+        $this->template->id = $id;
     }
 
     public function actionEdit($id) {
@@ -73,13 +73,29 @@ final class InsurerPresenter extends AdminBasePresenter {
 
     protected function createComponentAddDrugForm()
     {
-        $drug = $this->productService->getAll();
+        $id = $this->getParameter('id');
+        $drug = $this->productService->getAllActive();
 
         $form = new UI\Form();
-        $form->addSelect('producer', 'Vyrobca:', $drug->fetchPairs('id', 'name'))->setRequired();        
+        $form->addSelect('drug_id', 'Liek:', $drug->fetchPairs('id', 'name'))->setRequired();
+        $form->addText('price', "Cena:")->setRequired()->setDefaultValue(0)
+            ->addRule(Nette\Forms\Form::INTEGER, "Zľava musí byť celé číslo")->addRule(Nette\Forms\Form::MIN, "Zľava musí byť minimálne 1", 1);
         $form->addSubmit("add", "Pridať");
-        $form->onSuccess[] = [$this, 'addFormSucceeded'];
+        $form->addHidden('insurer_id')->setDefaultValue($id);
+        $form->onSuccess[] = [$this, 'addDrugFormSucceeded'];
         return $form;
+    }
+
+    public function addDrugFormSucceeded(UI\Form $form, $values) {
+
+        $this->drugInsurerService->insert([
+            'insurer_id' => $values->insurer_id,
+            'drug_id' => $values->drug_id,
+            'price' => $values->price
+        ]);
+
+        $this->redirect("Insurer:");
+
     }
 
     public function addFormSucceeded(UI\Form $form, $values)
