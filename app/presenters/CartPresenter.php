@@ -22,18 +22,22 @@ final class CartPresenter extends BasePresenter
     public function renderDefault()
     {
         if (isset($_SESSION['cart'])) {
-            $cart_products = $_SESSION['cart'];
+            if(count($_SESSION['cart']) == 0) {
+                unset($this->template->products);
+            } else {
+                $cart_products = $_SESSION['cart'];
 
-            $template_products = [];
+                $template_products = [];
 
-            foreach ($cart_products as $product) {
-                $temp_product = $this->productService->getByIDActive($product['productId']);
-                if ($temp_product) {
-                    $template_products[$product['productId']] = array($temp_product, $product['quantity']);
+                foreach ($cart_products as $product) {
+                    $temp_product = $this->productService->getByIDActive($product['productId']);
+                    if ($temp_product) {
+                        $template_products[$product['productId']] = array($temp_product, $product['quantity']);
+                    }
                 }
-            }
 
-            $this->template->products = $template_products;
+                $this->template->products = $template_products;
+            }
         }
 
     }
@@ -87,8 +91,14 @@ final class CartPresenter extends BasePresenter
     }
 
     public function handleDelete($id) {
-        unset($_SESSION['cart'][$id]);
-        $this->flashMessage("Produkt bol vyhodeny z kosika", "info");
+        foreach ($_SESSION['cart'] as $key => $cart_product) {
+            if($_SESSION['cart'][$key]['productId'] == $id) {
+                unset($_SESSION['cart'][$key]);
+                $this->redirect("Cart:");
+                $this->flashMessage("Produkt bol vyhodeny z kosika", "info");
+                return;
+            }
+        }
     }
 
     public function handleBuy() {

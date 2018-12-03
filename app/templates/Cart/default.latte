@@ -8,7 +8,6 @@
 	<div class="container-fluid content">
 		{ifset $products}
 			{form summaryForm}
-				{var $array_count = 0}
 				{foreach $products as $id => [$product, $count]}
 					<div class="row border-bottom pb-2 pt-2 border-dark">
 						<div class="col-2 offset-2 pl-0 d-flex align-items-center">
@@ -21,10 +20,9 @@
 							<p><input type=number name="{$id}" value={$count}> x {$product->price} €</p>
 						</div>
 						<div class="col-2 d-flex justify-content-end pr-0 align-items-center">
-							<a n:href="delete! $array_count"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
+							<a n:href="delete! $product->id"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
 						</div>
 					</div>
-					{php $array_count++}
 				{/foreach}
 				<div class="row mt-3">
 					<div class="col-8 pr-0 offset-2 d-flex justify-content-end">
