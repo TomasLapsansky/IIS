@@ -3,8 +3,8 @@
 {block title}
 	Summary
 {/block}
-
 {block content}
+    {var $sum = 0}
 	<div class="container-fluid content">
         <div class="row border-bottom pb-2 pt-2 border-dark">
             <div class="col-2 offset-2 pl-0 d-flex align-items-center">
@@ -18,8 +18,17 @@
             </div>
         </div>
 		<div class="row mt-3">
-			<div class="col-8 pr-0 offset-2 d-flex justify-content-end">
-            BUY
+			<div class="col-8 pr-0 offset-2 d-flex justify-content-between">
+                <span><b class="pr-3">Total:</b>{$sum}€</span>
+                <span>BUY</span>
+			</div>
+			<div class="col-8 pr-0 offset-2 d-flex flex-column justify-content-start mt-5">
+                <span><h4>Delivery information:</h4></span>
+                <span><b class="pr-3">Name:</b></span>
+                <span><b class="pr-3">Address:</b></span>
+                <span><b class="pr-3">City:</b></span>
+                <span><b class="pr-3">ZIP:</b></span>
+                <span><b class="pr-3">Country:</b></span>
 			</div>
 		</div>
 	</div>
