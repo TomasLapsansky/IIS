@@ -6,7 +6,6 @@
 				<span><b class="pr-3">ID:</b> {$order->id}</span><br>
 				<span><b class="pr-3">Status:</b> {$order->status}</span><br><br>
 			</div>
-		{foreach $products as $id => [$product, $orderDrug]}
 			<div style="border-bottom: 1px solid black padding-bottom: 1.5rem; padding-top:1.5rem; width:66%; margin:auto;">
 
                 <table style="width:100%">
@@ -17,17 +16,18 @@
                             <th style="width:30%; text-align:left;">Cena:</th>
                         </tr>
                     </thead>
+		{foreach $products as $id => [$product, $orderDrug]}
                     <tbody>
                         <tr>
                             <td>{$product->name}</td>
-                            <td>{$orderDrug->count}</td>
+                            <td>{$orderDrug->count} Ks</td>
                             <td>{$orderDrug->price} €</td>
                         </tr>
                     </tbody>
-                </table>
-			</div>
 			{php $sum += ($orderDrug->count*$orderDrug->price)}
-		{/foreach}<br>
+		{/foreach}
+                </table>
+			</div><br>
 		<div style="width:66%; margin:auto; margin-top:2rem;">
 			<div>
 				<span><b style="padding-right:2rem;">Total:</b>{$sum} €</span>

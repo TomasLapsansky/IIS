@@ -86,6 +86,11 @@ final class CartPresenter extends BasePresenter
         $this->redirect("Cart:summary");
     }
 
+    public function handleDelete($id) {
+        unset($_SESSION['cart'][$id]);
+        $this->flashMessage("Produkt bol vyhodeny z kosika", "info");
+    }
+
     public function handleBuy() {
         if(isset($_SESSION['cart'])) {
 
