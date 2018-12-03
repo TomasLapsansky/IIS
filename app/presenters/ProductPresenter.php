@@ -29,26 +29,33 @@ final class ProductPresenter extends BasePresenter
 
     public function cartCountSucceeded(UI\Form $form, $values) {
 
+        if(!$this->user->isLoggedIn()) {
+            $this->flashMessage("Musite byt prihlaseny");
+            $this->redirect("Login:");
+            return;
+        }
+
         if($values->count > 0) {
 
-            if (isset($_COOKIE['cart'])) {
-                $cart_products = unserialize($_COOKIE['cart']);
-            } else {
-                setcookie('cart', '', time() + 60 * 100000, '/');
-                //$cart_products = unserialize($_COOKIE['cart']);
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
             }
 
-            if (isset($cart_products)) {
-                $cart = $cart_products + [
-                        $values->id => $values->count
-                    ];
-            } else {
-                $cart = [
-                    $values->id => $values->count    //count
-                ];
+            /* duplicity check */
+            foreach ($_SESSION['cart'] as $product) {
+                if($product['productId'] == $values->id) {
+                    return;
+                }
             }
 
-            setcookie('cart', serialize($cart), time() + 60 * 100000, '/');
+            $bag = array(
+                "productId" => $values->id,
+                "quantity"  => $values->count
+            );
+            $_SESSION['cart'][] = $bag;
+
+            $this->flashMessage("Produkt bol uspesne pridany do kosika", "info");
+
         } else {
             $this->flashMessage("Mnozstvo musi byt aspon 1", "warning");
             return;

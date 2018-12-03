@@ -33,6 +33,7 @@ final class LoginPresenter extends BasePresenter {
         try {
             $this->user->login($values->email, $values->password);
 
+            $this->flashMessage("Boli ste uspesne prihlaseny", "info");
             $this->redirect("Homepage:");
 
         } catch (AuthenticationException $e) {

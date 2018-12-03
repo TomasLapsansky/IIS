@@ -14,27 +14,17 @@
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
+						<th scope="col">#</th>
                         <th scope="col">Status</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Zip</th>
-                        <th scope="col">Address</th>
-                        <th scope="col"></th>
+                        <th scope="col">Price</th>
                     </tr>
                     </thead>
                     <tbody>
                     {ifset $orders}
                         <tr n:foreach="$orders as $order">
-                            <th scope="row">{$order->id}</th>
+							<th scope="row"><a href="/order/detail/{$order->id}">{$order->id}</a></th>
                             <td>{$order->status}</td>
-                            <td>{$order->city}</td>
-                            <td>{$order->zip}</td>
-                            <td>{$order->address}</td>
-                            <td style="text-align:center;">
-                                <a href="/admin/order/{$order->id}"><i class="material-icons" style="color:blue;">description</i></a>
-                                <a href="/admin/order/{$order->id}/edit"><i class="material-icons" style="color:grey;">build</i></a>
-                                <a href="#"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
-                            </td>
+							<td></td>
                         </tr>
                     {else}
                         <tr>

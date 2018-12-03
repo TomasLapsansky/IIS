@@ -13,6 +13,7 @@ final class RegisterPresenter extends BasePresenter {
         parent::startup();
 
         if($this->user->isLoggedIn()) {
+            $this->flashMessage("Ste prihlaseny", "warn");
             $this->redirect("Homepage:");
         }
     }
@@ -51,6 +52,7 @@ final class RegisterPresenter extends BasePresenter {
             'insurer_id' => $values->insurer
         ]);
 
+        $this->flashMessage("Boli ste uspesne zaregistrovany, mozete sa prihlasit", "info");
         $this->redirect("Login:");
     }
 
