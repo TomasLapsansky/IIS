@@ -1,0 +1,44 @@
+{block content}
+	{var $sum = 0}
+	<div style="min-height:75vh; width:100%; padding-right:15px; padding-left:15px;">
+			<div style="display:flex; margin:auto;flex-direction:column; justify-content:flex-start;margin-top:2rem; width:66%;">
+				<span><h4 style="margin-top:0.5rem; margin-bottom:0.5rem;">Order information:</h4></span>
+				<span><b class="pr-3">ID:</b> {$order->id}</span>
+				<span><b class="pr-3">Status:</b> {$order->status}</span>
+			</div>
+		{foreach $products as $id => [$product, $orderDrug]}
+			<div style="border-bottom: 1px solid black padding-bottom: 1.5rem; padding-top:1.5rem; width:66%; margin:auto; display:flex">
+				<div style="width:25%; display:flex; align-items:center;">
+					<img src="{$product->image}" alt="product image" class="img-thumbnail" width="100">
+				</div>
+				<div style="width:25%; display:flex; align-items:center;">
+					{$product->name}
+				</div>
+				<div style="width:25%; display:flex; align-items:center;">
+					{$orderDrug->count} ks
+				</div>
+				<div style="width:25%; display:flex; align-items:center;">
+					X
+				</div>
+				<div style="width:25%; display:flex; align-items:center;">
+					{$orderDrug->price} €
+				</div>
+			</div>
+			{php $sum += ($orderDrug->count*$orderDrug->price)}
+		{/foreach}
+		<div style="width:66%; margin:auto; margin-top:2rem;">
+			<div>
+				<span><b style="padding-right:2rem;">Total:</b>{$sum} €</span>
+			</div>
+			<div style="display:flex; flex-direction:column; justify-content:flex-start;margin-top:2rem;">
+				<span><h4 style="margin-top:0.5rem; margin-bottom:0.5rem;">Delivery information:</h4></span>
+				{var $sys_user = $userService->getByID($order->user_id)}
+				<span><b class="pr-3">Name:</b> {$sys_user->name} {$sys_user->surname}</span>
+				<span><b class="pr-3">Address:</b> {$sys_user->address}</span>
+				<span><b class="pr-3">City:</b> {$sys_user->city}</span>
+				<span><b class="pr-3">ZIP:</b> {str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT)}</span>
+				<span><b class="pr-3">Country:</b> {$sys_user->country}</span>
+			</div>
+		</div>
+	</div>
+{/block}
