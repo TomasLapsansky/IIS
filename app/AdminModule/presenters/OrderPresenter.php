@@ -46,9 +46,9 @@ final class OrderPresenter extends AdminBasePresenter {
         $form = new UI\Form();
         $form->addText('user_id', 'Uzivatel ID:')->setRequired();
         $form->addText('city', 'Mesto:')->setRequired();
-        $form->addText('zip', 'Zip:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired();
         $form->addText('address', 'Adresa:')->setRequired();
-        $form->addSubmit('add', 'Add');
+        $form->addSubmit('add', 'Pridať');
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }
@@ -80,11 +80,11 @@ final class OrderPresenter extends AdminBasePresenter {
 
         $form = new UI\Form();
         $form->addText('status', 'Status:')->setRequired();
-        $form->addText('city', 'City:')->setRequired();
-        $form->addText('zip', 'ZIP:')->setRequired();
-        $form->addText('address', 'Address:')->setRequired();
+        $form->addText('city', 'Mesto:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired();
+        $form->addText('address', 'Adresa:')->setRequired();
         //$form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->addSubmit('edit', 'Edit');
+        $form->addSubmit('edit', 'Zmeniť');
         $form->addHidden('id');
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;

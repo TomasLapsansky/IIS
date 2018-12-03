@@ -13,9 +13,9 @@
 			<table class="table table-binsurered table-hover">
 				<thead class="thead-dark">
 				<tr>
-					<th scope="col">Drug</th>
-					<th scope="col">Price</th>
-					<th scope="col">Discounted</th>
+					<th scope="col">Liek</th>
+					<th scope="col">Cena</th>
+					<th scope="col">Zľava</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -27,20 +27,19 @@
 					</tr>
 				{else}
 					<tr>
-						<td>Insurers drugs not found</td>
+						<td>Poisťovna k lieku nenájdená</td>
 					</tr>
 				{/if}
 				</tbody>
 			</table>
 		</div>
 		<div class="col-10 offset-1 d-flex justify-content-end">
-			<a href="/admin/insurer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Add
-				drug</a>
+			<a href="/admin/insurer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Pridať liek</a>
 		</div>
 	{else}
 		<div class="row">
 			<div class="col-12">
-				<h1>Insurer with id {$id} doesn't exist</h1>
+				<h1>Poisťovňa s {$id} neexistuje</h1>
 			</div>
 		</div>
 	{/if}

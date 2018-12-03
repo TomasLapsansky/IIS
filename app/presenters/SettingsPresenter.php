@@ -40,16 +40,16 @@ final class SettingsPresenter extends BasePresenter {
         $insurers = $this->insurerService->getAll();
 
         $form = new UI\Form();
-        $form->addText('name', 'Name:')->setRequired();
-        $form->addText('surname', 'Surname:')->setRequired();
-        $form->addPassword('password', 'Password:');
-        $form->addText('city', 'City:')->setRequired();
-        $form->addText('address', 'Address:')->setRequired();
-        $form->addText('zip', 'ZIP:')->setRequired();
-        $form->addText('country', 'Country:')->setRequired();
+        $form->addText('name', 'Meno:')->setRequired();
+        $form->addText('surname', 'Priezvisko:')->setRequired();
+        $form->addPassword('password', 'Heslo:');
+        $form->addText('city', 'Mesto:')->setRequired();
+        $form->addText('address', 'Adresa:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired();
+        $form->addText('country', 'Štát:')->setRequired();
         $form->addHidden('id');
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->addSubmit('edit', 'Edit');
+        $form->addSubmit('edit', 'Uložiť');
         $form->onSuccess[] = [$this, 'setUserSucceeded'];
         return $form;
     }
@@ -79,7 +79,7 @@ final class SettingsPresenter extends BasePresenter {
     {
         $form = new \Nette\Application\UI\Form;
         $form->addUpload('file', 'Avatar:');
-        $form->addSubmit('Upload');
+        $form->addSubmit('Upload', 'Upload');
         $form->onSuccess[] = function(\Nette\Application\UI\Form $form) {
             $values = $form->getValues();
             $path = "image/avatar/".$this->user->getId();

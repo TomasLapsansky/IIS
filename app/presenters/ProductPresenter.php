@@ -65,9 +65,9 @@ final class ProductPresenter extends BasePresenter
     protected function createComponentCartCount() {
 
         $form = new UI\Form();
-        $form->addInteger("count", "Count:")->setRequired();
+        $form->addInteger("count", "Počet:")->setRequired();
         $form->addHidden("id");
-        $form->addSubmit("addToCart", "Add to cart");
+        $form->addSubmit("addToCart", "Pridať do košíku");
         $form->onSuccess[] = [$this, "cartCountSucceeded"];
 
         return $form;

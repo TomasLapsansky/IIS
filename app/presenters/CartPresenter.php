@@ -66,7 +66,7 @@ final class CartPresenter extends BasePresenter
     {
 
         $form = new UI\Form();
-        $form->addSubmit("summary", "Proceed to summary");
+        $form->addSubmit("summary", "Pokračovať");
         $form->onSuccess[] = [$this, "sendToSummarySuccedeed"];
 
         return $form;

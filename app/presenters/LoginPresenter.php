@@ -21,8 +21,8 @@ final class LoginPresenter extends BasePresenter {
 
         $form = new UI\Form;
         $form->addEmail("email", "Email:")->setRequired();
-        $form->addPassword("password", "Password:")->setRequired();
-        $form->addSubmit("login", "Login");
+        $form->addPassword("password", "Heslo:")->setRequired();
+        $form->addSubmit("login", "Prihlásiť");
         $form->onSuccess[] = [$this, "loginFormSucceeded"];
 
         return $form;

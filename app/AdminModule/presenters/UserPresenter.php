@@ -66,10 +66,10 @@ final class UserPresenter extends AdminBasePresenter {
         ])->setRequired();
         $form->addText('city', 'Mesto:')->setRequired();
         $form->addText('address', 'Adresa:')->setRequired();
-        $form->addText('zip', 'ZIP:')->setRequired();
-        $form->addText('country', 'Stat:')->setRequired();
-        $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->addSubmit('add', 'Add');
+        $form->addText('zip', 'PSČ:')->setRequired();
+        $form->addText('country', 'Štát:')->setRequired();
+        $form->addSelect('insurer', 'Poisťovňa:', $insurers->fetchPairs('id', 'name'))->setRequired();
+        $form->addSubmit('add', 'Pridať');
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }
@@ -113,10 +113,10 @@ final class UserPresenter extends AdminBasePresenter {
         ])->setRequired();
         $form->addText('city', 'Mesto:')->setRequired();
         $form->addText('address', 'Adresa:')->setRequired();
-        $form->addText('zip', 'ZIP:')->setRequired();
-        $form->addText('country', 'Stat:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired();
+        $form->addText('country', 'Štát:')->setRequired();
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->addSubmit('edit', 'Edit');
+        $form->addSubmit('edit', 'Upraviť');
         $form->addHidden('id');
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;

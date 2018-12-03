@@ -1,7 +1,7 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  Users
+  Používatelia
 {/block}
 
 {block content}
@@ -10,14 +10,14 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surename</th>
+                        <th scope="col">Meno</th>
+                        <th scope="col">Priezvisko</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">ZIP</th>
-                        <th scope="col">Country</th>
+                        <th scope="col">Mesto</th>
+                        <th scope="col">Adresa</th>
+                        <th scope="col">PSČ</th>
+                        <th scope="col">Štát</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -41,13 +41,13 @@
                         </tr>
                     {else}
                         <tr>
-                            <td>Users not found</td> {*TODO whole row*}
+                            <td colspan="10">Používateľ nenájdený</td> {*TODO whole row*}
                         </tr>
                     {/ifset}
                 </tbody>
             </table>
     </div>
     <div class="col-12 d-flex justify-content-end">
-        <a href="/admin/user/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New user</a>
+        <a href="/admin/user/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nový používateľ</a>
     </div>
 {/block}

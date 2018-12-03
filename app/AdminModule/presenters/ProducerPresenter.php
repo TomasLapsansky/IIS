@@ -42,9 +42,9 @@ final class ProducerPresenter extends AdminBasePresenter {
     {
         $form = new UI\Form();
         $form->addHidden("id");        
-        $form->addText('name', 'Producer name:')->setRequired();
-        $form->addInteger('time', 'Delivery time:')->setRequired();
-        $form->addSubmit("edit", "save");
+        $form->addText('name', 'Názov výrobcu:')->setRequired();
+        $form->addInteger('time', 'Čas dodania:')->setRequired();
+        $form->addSubmit("edit", "Uložiť");
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
     }
@@ -64,9 +64,9 @@ final class ProducerPresenter extends AdminBasePresenter {
     protected function createComponentAddForm()
     {
         $form = new UI\Form(); 
-        $form->addText('name', 'Producer name:')->setRequired();
-        $form->addInteger('time', 'Delivery time:')->setRequired();
-        $form->addSubmit("add", "Add new");
+        $form->addText('name', 'Názov výrobcu:')->setRequired();
+        $form->addInteger('time', 'Čas dodania:')->setRequired();
+        $form->addSubmit("add", "Pridať nový");
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }

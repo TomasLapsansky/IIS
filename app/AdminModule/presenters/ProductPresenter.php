@@ -47,11 +47,11 @@ final class ProductPresenter extends AdminBasePresenter {
 
         $form = new UI\Form();
         $form->addText('name', 'Meno:')->setRequired();
-        $form->addText('count', 'Pocet:')->setRequired();
-        $form->addSelect('producer', 'Vyrobca:', $producers->fetchPairs('id', 'name'))->setRequired();
+        $form->addText('count', 'Počet:')->setRequired();
+        $form->addSelect('producer', 'Výrobca:', $producers->fetchPairs('id', 'name'))->setRequired();
         $form->addText('price', 'Cena:')->setRequired();
         $form->addTextArea('description', 'Popis:')->setRequired();
-        $form->addSubmit('add', 'Add');
+        $form->addSubmit('add', 'Pridať');
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }
@@ -75,11 +75,11 @@ final class ProductPresenter extends AdminBasePresenter {
 
         $form = new UI\Form();
         $form->addText('name', 'Meno:')->setRequired();
-        $form->addText('count', 'Pocet:')->setRequired();
-        $form->addSelect('producer', 'Vyrobca:', $producers->fetchPairs('id', 'name'))->setRequired();        
+        $form->addText('count', 'Počet:')->setRequired();
+        $form->addSelect('producer', 'Výrobca:', $producers->fetchPairs('id', 'name'))->setRequired();        
         $form->addText('price', 'Cena:')->setRequired();
         $form->addTextArea('description', 'Popis:')->setRequired();
-        $form->addSubmit('edit', 'Edit');
+        $form->addSubmit('edit', 'Upraviť');
         $form->addHidden('id');
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;

@@ -4,7 +4,7 @@
 	{if $product}
 		{$product->name}
 	{else}
-		Not found
+		Nenájdené
 	{/if}
 {/block}
 
@@ -24,7 +24,7 @@
 				<div class="col-md-4 col-sm-12 pr-0">
 					<div class="row">
 						<div class="col-12">
-							<h5>Vyrobca:</h5>
+							<h5>Výrobca:</h5>
 							<p>
 								{$producer->name}
 							</p>
@@ -80,7 +80,7 @@
 	{else}
 		<div class="row">
 			<div class="col-12">
-				<h1>Product with id {$id} doesn't exist</h1>
+				<h1>Produkt s id {$id} neexistuje</h1>
 			</div>
 		</div>
 	{/if}

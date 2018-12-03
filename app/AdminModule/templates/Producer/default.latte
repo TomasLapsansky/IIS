@@ -1,7 +1,7 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-	Producers
+	Výrobca
 {/block}
 
 {block content}
@@ -10,8 +10,8 @@
 			<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
-				<th scope="col">Name</th>
-				<th scope="col">Delivery time</th>
+				<th scope="col">Meno</th>
+				<th scope="col">Čas dodania</th>
 				<th scope="col"></th>
 			</tr>
 			</thead>
@@ -33,14 +33,13 @@
 				</tr>
 			{else}
 				<tr>
-					<td>producers not found</td> {*TODO whole line*}
+					<td colspan="4">Výrobcovia nenájdený</td>
 				</tr>
 			{/ifset}
 			</tbody>
 		</table>
 	</div>
 	<div class="col-10 offset-1 d-flex justify-content-end">
-		<a href="/admin/producer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New
-			producer</a>
+		<a href="/admin/producer/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nový výrobca</a>
 	</div>
 {/block}

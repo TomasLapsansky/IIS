@@ -1,7 +1,7 @@
 {layout '../parts/@layout.latte'}
 
 {block title}
-	Order {$order->id} detail
+	Detail objednávky {$order->id}
 {/block}
 {block content}
 	{var $sum = 0}
@@ -28,24 +28,24 @@
 		{/foreach}
 		<div class="row mt-3">
 			<div class="col-8 pr-0 offset-2 d-flex justify-content-between">
-				<span><b class="pr-3">Total:</b>{$sum} €</span>
+				<span><b class="pr-3">Celkom:</b>{$sum} €</span>
 			</div>
 			<div class="col-8 pr-0 offset-2 d-flex flex-column justify-content-start mt-5">
-				<span><h4>Order information:</h4></span>
+				<span><h4>Informácie objednávky:</h4></span>
 				<span><b class="pr-3">ID:</b> {$order->id}</span>
 				<span><b class="pr-3">Status:</b> {$order->status}</span>
 			</div>
 			<div class="col-8 pr-0 offset-2 d-flex flex-column justify-content-start mt-5">
-				<span><h4>Delivery information:</h4></span>
+				<span><h4>Informácie dodania:</h4></span>
 				{var $sys_user = $userService->getByID($order->user_id)}
-				<span><b class="pr-3">Name:</b> {$sys_user->name} {$sys_user->surname}</span>
-				<span><b class="pr-3">Address:</b> {$sys_user->address}</span>
-				<span><b class="pr-3">City:</b> {$sys_user->city}</span>
-				<span><b class="pr-3">ZIP:</b> {str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT)}</span>
-				<span><b class="pr-3">Country:</b> {$sys_user->country}</span>
+				<span><b class="pr-3">Meno:</b> {$sys_user->name} {$sys_user->surname}</span>
+				<span><b class="pr-3">Adresa:</b> {$sys_user->address}</span>
+				<span><b class="pr-3">Mesto:</b> {$sys_user->city}</span>
+				<span><b class="pr-3">PSČ:</b> {str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT)}</span>
+				<span><b class="pr-3">Štát:</b> {$sys_user->country}</span>
 			</div>
 			<div class="col-8 pr-0 offset-2 d-flex justify-content-between">
-				<span><b class="pr-3"><a n:href="createPDF! $order->id">Download PDF</a></b></span>
+				<span><b class="pr-3"><a n:href="createPDF! $order->id">Stiahnuť PDF</a></b></span>
 			</div>
 		</div>
 	</div>

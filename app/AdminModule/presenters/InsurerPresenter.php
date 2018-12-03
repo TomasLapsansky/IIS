@@ -45,8 +45,8 @@ final class InsurerPresenter extends AdminBasePresenter {
     {
         $form = new UI\Form();
         $form->addHidden("id");        
-        $form->addText('name', 'Insurer name:')->setRequired();
-        $form->addSubmit("edit", "save");
+        $form->addText('name', 'Názov poisťovne:')->setRequired();
+        $form->addSubmit("edit", "Uložiť");
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
     }
@@ -65,8 +65,8 @@ final class InsurerPresenter extends AdminBasePresenter {
     protected function createComponentAddForm()
     {
         $form = new UI\Form();    
-        $form->addText('name', 'Insurer name:')->setRequired();
-        $form->addSubmit("add", "Add");
+        $form->addText('name', 'Názov poisťovne:')->setRequired();
+        $form->addSubmit("add", "Pridať");
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }
@@ -77,7 +77,7 @@ final class InsurerPresenter extends AdminBasePresenter {
 
         $form = new UI\Form();
         $form->addSelect('producer', 'Vyrobca:', $drug->fetchPairs('id', 'name'))->setRequired();        
-        $form->addSubmit("add", "Add");
+        $form->addSubmit("add", "Pridať");
         $form->onSuccess[] = [$this, 'addFormSucceeded'];
         return $form;
     }

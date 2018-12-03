@@ -1,7 +1,7 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  User {$id}
+  Používateľ {$id}
 {/block}
 
 {block content}
@@ -38,31 +38,31 @@
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
-                        <span class="h5">City:</span>
+                        <span class="h5">Mesto:</span>
                         <span>
                             {$sys_user->city}
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
-                        <span class="h5">Address:</span>
+                        <span class="h5">Adresa:</span>
                         <span>
                             {$sys_user->address}
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
-                        <span class="h5">ZIP:</span>
+                        <span class="h5">PSČ:</span>
                         <span>
                             {str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT)}
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
-                        <span class="h5">Country:</span>
+                        <span class="h5">Štát:</span>
                         <span>
                             {$sys_user->country}
                         </span>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
-                        <span class="h5">Insurer:</span>
+                        <span class="h5">Poisťovňa:</span>
                         <span>
                             {if $insurer}
                                 {$insurer->name}
@@ -84,7 +84,7 @@
         {else}
             <div class="row">
                 <div class="col-12">
-                    <h1>User with id {$id} doesn't exist</h1>
+                    <h1>Používateľ číslo {$id} neexistuje</h1>
                 </div>
             </div>
         {/if}
