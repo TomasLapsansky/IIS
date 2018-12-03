@@ -55,19 +55,19 @@ INSERT INTO order_product (status, city, zip, address, user_id) VALUES ('sended'
 
 
 INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 1, 1);
-INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (12, 3, 1);
-INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 2, 2);
-INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (5, 4, 2);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (3, 3, 1);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (4, 2, 2);
+INSERT INTO drug_insurer (price, drug_id, insurer_id) VALUES (8, 4, 2);
 
 
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (5, 7, 1);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (3, 1, 2);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (4, 2, 3);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (4, 13, 4);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (3, 15, 5);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (2, 12, 6);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (7, 5, 7);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (5, 25, 8);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (8, 20, 9);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (11, 18, 10);
-INSERT INTO order_drug (count, drug_id, order_id) VALUES (17, 17, 11);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (5, 7, 1, 16);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (3, 1, 2, 10);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (4, 2, 3, 13);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (4, 13, 4, 8);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (3, 15, 5, 22);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (2, 12, 6, 3);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (7, 5, 7, 5);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (5, 25, 8, 7);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (8, 20, 9, 8);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (11, 18, 10, 7);
+INSERT INTO order_drug (count, drug_id, order_id, price) VALUES (17, 17, 11, 5);

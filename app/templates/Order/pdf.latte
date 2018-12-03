@@ -4,32 +4,34 @@
 			<div style="margin:auto;margin-top:2rem; width:66%;">
 				<span><h4 style="margin-top:0.5rem; margin-bottom:0.5rem;">Order information:</h4></span><br>
 				<span><b class="pr-3">ID:</b> {$order->id}</span><br>
-				<span><b class="pr-3">Status:</b> {$order->status}</span><br>
+				<span><b class="pr-3">Status:</b> {$order->status}</span><br><br>
 			</div>
-		{foreach $products as $id => [$product, $orderDrug]}
 			<div style="border-bottom: 1px solid black padding-bottom: 1.5rem; padding-top:1.5rem; width:66%; margin:auto;">
-				<div style="width:20%; display:inline-block; align-items:center;">
-					<img src="{$product->image}" alt="product image" class="img-thumbnail" width="100">
-				</div>
-				<div style="width:20%; display:inline-block;">
-					{$product->name}
-				</div>
-				<div style="width:20%; display:inline-block;">
-					{$orderDrug->count} ks
-				</div>
-				<div style="width:20%; display:inline-block;">
-					X
-				</div>
-				<div style="width:15%; display:inline-block;">
-					{$orderDrug->price} €
-				</div>
-			</div>
+
+                <table style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width:30%; text-align:left;">Nazov:</th>
+                            <th style="width:30%; text-align:left;">Pocet:</th>
+                            <th style="width:30%; text-align:left;">Cena:</th>
+                        </tr>
+                    </thead>
+		{foreach $products as $id => [$product, $orderDrug]}
+                    <tbody>
+                        <tr>
+                            <td>{$product->name}</td>
+                            <td>{$orderDrug->count} Ks</td>
+                            <td>{$orderDrug->price} €</td>
+                        </tr>
+                    </tbody>
 			{php $sum += ($orderDrug->count*$orderDrug->price)}
 		{/foreach}
+                </table>
+			</div><br>
 		<div style="width:66%; margin:auto; margin-top:2rem;">
 			<div>
 				<span><b style="padding-right:2rem;">Total:</b>{$sum} €</span>
-			</div>
+			</div><br>
 			<div style="margin-top:2rem;">
 				<span><h4 style="margin-top:0.5rem; margin-bottom:0.5rem;">Delivery information:</h4></span><br>
 				{var $sys_user = $userService->getByID($order->user_id)}
