@@ -29,6 +29,19 @@
 						{input summary}
 					{/form}
 				</div>
+				<div class="col-2 d-flex align-items-center">
+    				<p><input type=number name="{$id}" value={$count}></p>
+				</div>
+				<div class="col-2 d-flex justify-content-end pr-0 align-items-center">
+                        <a href="#"><i class="material-icons" style="color:hsl(0, 100%, 30%);">delete</i></a>
+				</div>
+			</div>
+		{/foreach}
+		<div class="row mt-3">
+			<div class="col-8 pr-0 offset-2 d-flex justify-content-end">
+				{form summaryForm}
+					{input summary}
+				{/form}
 			</div>
 		{else}
 			<p>Kosik je prazdny</p>

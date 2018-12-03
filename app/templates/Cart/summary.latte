@@ -3,8 +3,8 @@
 {block title}
 	Summary
 {/block}
-
 {block content}
+    {var $sum = 0}
 	<div class="container-fluid content">
 		{foreach $products as $id => [$product, $count]}
 			<div class="row border-bottom pb-2 pt-2 border-dark">
@@ -20,8 +20,17 @@
 			</div>
 		{/foreach}
 		<div class="row mt-3">
-			<div class="col-8 pr-0 offset-2 d-flex justify-content-end">
-				<a n:href="buy!">BUY</a>
+			<div class="col-8 pr-0 offset-2 d-flex justify-content-between">
+                <span><b class="pr-3">Total:</b>{$sum}€</span>
+                <span><a n:href="buy!">BUY</a></span>
+			</div>
+			<div class="col-8 pr-0 offset-2 d-flex flex-column justify-content-start mt-5">
+                <span><h4>Delivery information:</h4></span>
+                <span><b class="pr-3">Name:</b></span>
+                <span><b class="pr-3">Address:</b></span>
+                <span><b class="pr-3">City:</b></span>
+                <span><b class="pr-3">ZIP:</b></span>
+                <span><b class="pr-3">Country:</b></span>
 			</div>
 		</div>
 	</div>
