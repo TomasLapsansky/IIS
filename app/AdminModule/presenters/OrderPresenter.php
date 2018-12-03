@@ -19,7 +19,7 @@ final class OrderPresenter extends AdminBasePresenter {
             $this->template->sys_user = $this->userService->getByID($order->user_id);
 
             $this->template->productsOrder = $this->orderDrugService->getAll()->where('order_id', $id);
-            $this->template->products = $this->productService->getAll();
+            $this->template->products = $this->productService;
         }
     }
 

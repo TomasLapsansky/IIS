@@ -30,7 +30,7 @@
 					<div class="col-8 d-flex justify-content-between">
 						<h5>ZIP:</h5>
 						<p>
-							{$order->zip}
+							{str_pad($order->zip, 5, "0", STR_PAD_LEFT)}
 						</p>
 					</div>
 					<div class="col-8 d-flex justify-content-between">
@@ -65,7 +65,7 @@
 							<tbody>
 							{if $productsOrder->count() != 0}
 								<tr n:foreach="$productsOrder as $productOrder">
-									<td>{$products->where('id', $productOrder->drug_id)->fetch()->name}</td>
+									<td>{$products->getByID($productOrder->drug_id)->name}</td>
 									<td>{$productOrder->count}</td>
 								</tr>
 							{else}
