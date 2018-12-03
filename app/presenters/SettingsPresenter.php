@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 use Nette\Application\UI;
+use Nette\Forms\Form;
 use Nette\Security\Passwords;
 
 
@@ -27,7 +28,7 @@ final class SettingsPresenter extends BasePresenter {
             'surname' => $sys_user->surname,
             'city' => $sys_user->city,
             'address' => $sys_user->address,
-            'zip' => $sys_user->zip,
+            'zip' => str_pad($sys_user->zip, 5, "0", STR_PAD_LEFT),
             'country' => $sys_user->country,
             'insurer' => $sys_user->insurer_id,
             'id' => $sys_user->id
@@ -40,13 +41,19 @@ final class SettingsPresenter extends BasePresenter {
         $insurers = $this->insurerService->getAll();
 
         $form = new UI\Form();
-        $form->addText('name', 'Meno:')->setRequired();
-        $form->addText('surname', 'Priezvisko:')->setRequired();
-        $form->addPassword('password', 'Heslo:');
-        $form->addText('city', 'Mesto:')->setRequired();
+        $form->addText('name', 'Meno:')->setRequired()
+            ->addRule(Form::PATTERN, 'Meno moze obsahovat iba znaky', '[a-zA-Z]+');
+        $form->addText('surname', 'Priezvisko:')->setRequired()
+            ->addRule(Form::PATTERN, 'Priezvisko moze obsahovat iba znaky', '[a-zA-Z]+');
+        $form->addPassword('password', 'Heslo:')->setRequired(false)
+            ->addRule(Form::MIN_LENGTH, 'Heslo musi mat aspon 5 znakov', 5);
+        $form->addText('city', 'City:')->setRequired()
+            ->addRule(Form::PATTERN, 'Mesto moze obsahovat iba znaky', '[a-zA-Z]+');
         $form->addText('address', 'Adresa:')->setRequired();
-        $form->addText('zip', 'PSČ:')->setRequired();
-        $form->addText('country', 'Štát:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired()
+            ->addRule(Form::PATTERN, 'ZIP musi mat aspon 5 cisel', '([0-9]\s*){5}');
+        $form->addText('country', 'Štát:')->setRequired()
+            ->addRule(Form::PATTERN, 'Krajina moze obsahovat iba znaky', '[a-zA-Z]+');
         $form->addHidden('id');
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
         $form->addSubmit('edit', 'Uložiť');
@@ -79,7 +86,7 @@ final class SettingsPresenter extends BasePresenter {
     {
         $form = new \Nette\Application\UI\Form;
         $form->addUpload('file', 'Avatar:');
-        $form->addSubmit('Upload', 'Upload');
+        $form->addSubmit('upload', 'Upload');
         $form->onSuccess[] = function(\Nette\Application\UI\Form $form) {
             $values = $form->getValues();
             $path = "image/avatar/".$this->user->getId();
