@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 02, 2018 at 02:36 PM
+-- Generation Time: Dec 03, 2018 at 03:33 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -73,7 +73,8 @@ CREATE TABLE `order_drug` (
   `id` int(10) UNSIGNED NOT NULL,
   `count` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `drug_id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(10) UNSIGNED NOT NULL
+  `order_id` int(10) UNSIGNED NOT NULL,
+  `price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
