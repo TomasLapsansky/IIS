@@ -75,4 +75,22 @@ final class SettingsPresenter extends BasePresenter {
         $this->flashMessage("Vas profil bol upraveny", "success");
     }
 
+    protected function createComponentUploadAvatar()
+    {
+        $form = new \Nette\Application\UI\Form;
+        $form->addUpload('file', 'Avatar:');
+        $form->addSubmit('Upload');
+        $form->onSuccess[] = function(\Nette\Application\UI\Form $form) {
+            $values = $form->getValues();
+            $path = "image/avatar/".$this->user->getId();
+            $values->file->move($path);
+            $this->userService->getByID($this->user->getId())->update([
+                'avatar' => '/'.$path
+            ]);
+            $this->redirect('Homepage:default');
+        };
+
+        return $form;
+    }
+
 }
