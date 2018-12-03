@@ -74,6 +74,10 @@ final class CartPresenter extends BasePresenter
             $product = $this->productService->getByIDActive($cart_product['productId']);
             if($product) {
                 $prod_count = $form->getHttpData($form::DATA_TEXT, "{$product->id}");
+                if($prod_count <= 0) {
+                    $this->flashMessage("Mnozstvo produktov musi byt aspon 1", "error");
+                    return;
+                }
                 $_SESSION['cart'][$key]['quantity'] = $prod_count;
 
             }
