@@ -11,9 +11,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Status</th>
-                <th scope="col">City</th>
-                <th scope="col">Zip</th>
-                <th scope="col">Address</th>
+                <th scope="col">Mesto</th>
+                <th scope="col">PSČ</th>
+                <th scope="col">Adresa</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -33,13 +33,10 @@
                 </tr>
             {else}
                 <tr>
-                    <td>orders not found</td> {*TODO whole line*}
+                    <td>Objednávka nenájdená</td>
                 </tr>
             {/ifset}
             </tbody>
         </table>
     </div>
-    {*<div class="col-10 offset-1 d-flex justify-content-end">
-        <a href="/admin/order/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New order</a>
-    </div>*}
 {/block}

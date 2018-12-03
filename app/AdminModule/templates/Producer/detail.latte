@@ -1,21 +1,21 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  producer detail {$id}
+  Detail výrobcu {$id}
 {/block}
 
 {block content}
     <div class="col-10 offset-1 mb-3">
         <h1 class="h3">{$producer->name}</h1>
-        <span><b class="pr-3">Time to delivery:</b>{$producer->time_delivery} days</span>
+        <span><b class="pr-3">Čas dodania:</b>{$producer->time_delivery} dní</span>
     </div>
     <div class="col-10 offset-1">
         <table class="table table-bproducered table-hover">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Drug</th>
-                <th scope="col">Price</th>
+                <th scope="col">Liek</th>
+                <th scope="col">Cena</th>
             </tr>
             </thead>
             <tbody>
@@ -27,13 +27,10 @@
                 </tr>
             {else}
                 <tr>
-                    <td>producers drugs not found</td>
+                    <td colspan="3">Lieky výrobcu sa nenašli</td>
                 </tr>
             {/if}
             </tbody>
         </table>
     </div>
-    {*<div class="col-10 offset-1 d-flex justify-content-end">
-        <a href="/admin/product/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Add drug</a>
-    </div>*}
 {/block}

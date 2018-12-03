@@ -1,7 +1,7 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-	Order {$id}
+	Objednávka {$id}
 {/block}
 
 {block content}
@@ -16,7 +16,7 @@
 			<div class="col-md-6 col-sm-12">
 				<div class="row">
 					<div class="col-8 d-flex justify-content-between">
-						<h5>User:</h5>
+						<h5>Používateľ:</h5>
 						<p>
 							{$sys_user->name} {$sys_user->surname}
 						</p>
@@ -28,19 +28,19 @@
 						</p>
 					</div>
 					<div class="col-8 d-flex justify-content-between">
-						<h5>ZIP:</h5>
+						<h5>PSČ:</h5>
 						<p>
 							{str_pad($order->zip, 5, "0", STR_PAD_LEFT)}
 						</p>
 					</div>
 					<div class="col-8 d-flex justify-content-between">
-						<h5>City:</h5>
+						<h5>Mesto:</h5>
 						<p>
 							{$order->city}
 						</p>
 					</div>
 					<div class="col-8 d-flex justify-content-between">
-						<h5>Address:</h5>
+						<h5>Adresa:</h5>
 						<p>
 							{$order->address}
 						</p>
@@ -49,8 +49,8 @@
 				<div class="row">
 					<div class="col-8 d-flex justify-content-between">
 						<a href="/admin/order/{$order->id}/edit" class="btn btn-primary btn-sm active" role="button"
-						   aria-pressed="true">Edit</a>
-						<a n:href="delete! $order->id" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+						   aria-pressed="true">Upraviť</a>
+						<a n:href="delete! $order->id" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Zmazať</a>
 					</div>
 				</div>
 				<div class="row">
@@ -58,8 +58,8 @@
 						<table class="table table-bordered table-hover">
 							<thead class="thead-dark">
 							<tr>
-								<th scope="col">Drug name</th>
-								<th scope="col">Count</th>
+								<th scope="col">Názov lieku</th>
+								<th scope="col">Počet</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -70,16 +70,12 @@
 								</tr>
 							{else}
 								<tr>
-									<td>Products not found</td>
+									<td>Produkt nenájdený</td>
 								</tr>
 							{/if}
 							</tbody>
 						</table>
 					</div>
-					{*<div class="col-10 d-flex justify-content-end">
-						<a href="/admin/order/add" class="btn btn-primary btn-md active" role="button"
-						   aria-pressed="true">New drug</a>
-					</div>*}
 				</div>
 			</div>
 		</div>
@@ -87,7 +83,7 @@
 	{else}
 		<div class="row">
 			<div class="col-12">
-				<h1>Order with id {$id} doesn't exist</h1>
+				<h1>Objednávka číslo {$id} neexistuje</h1>
 			</div>
 		</div>
 	{/if}

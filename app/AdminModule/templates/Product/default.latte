@@ -1,7 +1,7 @@
 {layout '../Parts/layout.latte'}
 
 {block title}
-  Products
+  Produkty
 {/block}
 
 {block content}
@@ -10,10 +10,10 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Count</th>
-                <th scope="col">Producer</th>
-                <th scope="col">Price</th>
+                <th scope="col">Meno</th>
+                <th scope="col">Počet</th>
+                <th scope="col">Výrobca</th>
+                <th scope="col">Cena</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -33,13 +33,13 @@
                 </tr>
             {else}
                 <tr>
-                    <td>Products not found</td> {*TODO whole line*}
+                    <td colspan="6">Žiadne produkty</td>
                 </tr>
             {/ifset}
             </tbody>
         </table>
     </div>
     <div class="col-10 offset-1 d-flex justify-content-end">
-        <a href="/admin/product/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">New Product</a>
+        <a href="/admin/product/add" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nový produkt</a>
     </div>
 {/block}

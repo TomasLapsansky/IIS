@@ -41,22 +41,22 @@ final class SettingsPresenter extends BasePresenter {
         $insurers = $this->insurerService->getAll();
 
         $form = new UI\Form();
-        $form->addText('name', 'Name:')->setRequired()
+        $form->addText('name', 'Meno:')->setRequired()
             ->addRule(Form::PATTERN, 'Meno moze obsahovat iba znaky', '[a-zA-Z]+');
-        $form->addText('surname', 'Surname:')->setRequired()
+        $form->addText('surname', 'Priezvisko:')->setRequired()
             ->addRule(Form::PATTERN, 'Priezvisko moze obsahovat iba znaky', '[a-zA-Z]+');
-        $form->addPassword('password', 'Password:')->setRequired(false)
+        $form->addPassword('password', 'Heslo:')->setRequired(false)
             ->addRule(Form::MIN_LENGTH, 'Heslo musi mat aspon 5 znakov', 5);
         $form->addText('city', 'City:')->setRequired()
             ->addRule(Form::PATTERN, 'Mesto moze obsahovat iba znaky', '[a-zA-Z]+');
-        $form->addText('address', 'Address:')->setRequired();
-        $form->addText('zip', 'ZIP:')->setRequired()
+        $form->addText('address', 'Adresa:')->setRequired();
+        $form->addText('zip', 'PSČ:')->setRequired()
             ->addRule(Form::PATTERN, 'ZIP musi mat aspon 5 cisel', '([0-9]\s*){5}');
-        $form->addText('country', 'Country:')->setRequired()
+        $form->addText('country', 'Štát:')->setRequired()
             ->addRule(Form::PATTERN, 'Krajina moze obsahovat iba znaky', '[a-zA-Z]+');
         $form->addHidden('id');
         $form->addSelect('insurer', 'Poistovna:', $insurers->fetchPairs('id', 'name'))->setRequired();
-        $form->addSubmit('edit', 'Edit');
+        $form->addSubmit('edit', 'Uložiť');
         $form->onSuccess[] = [$this, 'setUserSucceeded'];
         return $form;
     }
