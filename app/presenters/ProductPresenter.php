@@ -40,7 +40,14 @@ final class ProductPresenter extends BasePresenter
             if (!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = array();
             }
-            //if(isset($_SESSION['cart'][]))    TODO
+
+            /* duplicity check */
+            foreach ($_SESSION['cart'] as $product) {
+                if($product['productId'] == $values->id) {
+                    return;
+                }
+            }
+
             $bag = array(
                 "productId" => $values->id,
                 "quantity"  => $values->count
