@@ -109,14 +109,17 @@ final class ProductPresenter extends AdminBasePresenter {
 
     protected function createComponentUploadImage()
     {
+        $id = $this->getParameter('id');
+
         $form = new \Nette\Application\UI\Form;
         $form->addUpload('file', 'Image:');
         $form->addSubmit('Upload');
+        $form->addHidden('id')->setDefaultValue($id);
         $form->onSuccess[] = function(\Nette\Application\UI\Form $form) {
             $values = $form->getValues();
-            $path = "image/product/".$this->user->getId();
+            $path = "image/product/".$values->id;
             $values->file->move($path);
-            $this->productService->getByID($this->user->getId())->update([
+            $this->productService->getByID($values->id)->update([
                 'image' => '/'.$path
             ]);
             $this->redirect('Product:');
