@@ -24,7 +24,7 @@
                         <tr n:foreach="$orders as $order">
 							<th scope="row"><a href="/order/detail/{$order->id}">{$order->id}</a></th>
                             <td>{$order->status}</td>
-							<td></td>
+							<td>{$orderDrugService->getPrice($order->id)} €</td>
                         </tr>
                     {else}
                         <tr>

@@ -16,6 +16,7 @@ final class OrderPresenter extends BasePresenter {
 
     public function renderDefault() {
         $this->template->orders = $this->orderService->getAllActive()->where('user_id', $this->user->getId());
+        $this->template->orderDrugService = $this->orderDrugService;
     }
 
     public function actionDetail() {

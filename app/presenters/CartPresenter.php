@@ -54,6 +54,7 @@ final class CartPresenter extends BasePresenter
             }
 
             $this->template->products = $template_products;
+            $this->template->sys_user = $this->userService->getByID($this->user->getId());
         }
     }
 
@@ -69,21 +70,14 @@ final class CartPresenter extends BasePresenter
 
     public function sendToSummarySuccedeed(UI\Form $form, $values)
     {
-        /*$cart_products = unserialize($_COOKIE['cart']);
-
-        $products_summary =[];
-
-        foreach ($cart_products as $product => $count) {
-            //$product = $this->productService->getByIDActive($product_id);
+        foreach ($_SESSION['cart'] as $key => $cart_product) {
+            $product = $this->productService->getByIDActive($cart_product['productId']);
             if($product) {
-                $prod_count =$form->getHttpData($form::DATA_LINE, '{$product_id}');
-                $products_summary[$product_id] = array($product, $prod_count);
+                $prod_count = $form->getHttpData($form::DATA_TEXT, "{$product->id}");
+                $_SESSION['cart'][$key]['quantity'] = $prod_count;
+
             }
         }
-
-        $this->redirect("Cart:summary", $products_summary);*/
-
-        // TODO
 
         $this->redirect("Cart:summary");
     }
@@ -92,6 +86,19 @@ final class CartPresenter extends BasePresenter
         if(isset($_SESSION['cart'])) {
 
             $cart_products = $_SESSION['cart'];
+
+            /* Capacity check and sub */
+            foreach ($cart_products as $cart_product) {
+                $product = $this->productService->getByID($cart_product['productId']);
+                if($product->count < $cart_product['quantity']) {
+                    $this->flashMessage("V kosiku je viac produktov ako mame naskladnenych, prepacte", "error");
+                    return;
+                } else {
+                    $product->update([
+                        'count' => $product->count - $cart_product['quantity']
+                    ]);
+                }
+            }
 
             $sys_user = $this->userService->getByID($this->user->getId());
             $new_order = $this->orderService->insert([
@@ -105,6 +112,7 @@ final class CartPresenter extends BasePresenter
             foreach ($cart_products as $product) {
                 $this->orderDrugService->insert([
                     'count' => $product['quantity'],
+                    'price' => $this->productService->getByID($product['productId'])->price,
                     'drug_id' => $product['productId'],
                     'order_id' => $new_order->id
                 ]);
